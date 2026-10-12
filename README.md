@@ -18,6 +18,41 @@ python3 -m http.server 3000
 # then open http://localhost:3000
 ```
 
+Or run the zero-dependency Node server from the repo root (what Hostinger
+runs): `npm start` → http://localhost:3000
+
+## Editing and deploying (Hostinger)
+
+The live site at `https://tassneem.chrif.net` is deployed from the
+**`hostinger-static`** branch (site files at the repo root). `main` is the
+working branch: edit files under `public/` here.
+
+**Safe deploy flow:**
+
+1. Edit files under `public/` (content, styles, scripts).
+2. Preview locally: `npm start` → http://localhost:3000
+3. Deploy:
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File deploy.ps1
+   ```
+   The script smoke-tests the site locally first (server start, page +
+   assets return 200, every `href`/`src` in `index.html` resolves) and
+   **refuses to push if anything fails** — the live site can't get a
+   broken build. It then syncs `public/` to the `hostinger-static` branch
+   and confirms the live URL returns 200 after Hostinger redeploys.
+4. Commit the same change to `main` for history:
+   `git add -A; git commit -m "describe it"; git push`
+
+**Rollback** (if a deploy ever breaks the site):
+
+```powershell
+deploy.ps1 -Rollback                # list the last 10 live deploys
+deploy.ps1 -Rollback -Commit <sha>  # instantly revert the site to one
+```
+
+Manual alternative: push `public/` contents to the `hostinger-static`
+branch yourself — Hostinger redeploys on every push to that branch.
+
 ## Layout
 
 ```
