@@ -1,2 +1,7 @@
 _chk/
 _live/
+
+# Environment secrets (Hostinger may write PORT/config here — never commit)
+.env
+.env.*
+node_modules/

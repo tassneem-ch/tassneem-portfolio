@@ -17,6 +17,26 @@ const path = require('path');
 const zlib = require('zlib');
 const crypto = require('crypto');
 
+// Minimal .env loader (zero dependencies). Hosting platforms (Hostinger
+// included) often write the runtime config — including the assigned PORT —
+// into a .env file in the app directory instead of exporting real env vars.
+// Values already set in the environment always win.
+(function loadEnvFile() {
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, '.env'), 'utf8');
+    for (const line of raw.split(/\r?\n/)) {
+      const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/);
+      if (!m) continue;
+      const key = m[1];
+      let val = m[2].trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (!(key in process.env)) process.env[key] = val;
+    }
+  } catch { /* no .env file — fine, use the process environment */ }
+})();
+
 // Hostinger injects PORT (some environments use HTTP_PORT instead).
 // Never read process.env.HOST — platforms often set it to a hostname that
 // isn't a valid bind address, which crashes the app at startup.
