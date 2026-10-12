@@ -17,11 +17,10 @@ const path = require('path');
 const zlib = require('zlib');
 const crypto = require('crypto');
 
-// Hostinger injects PORT; some environments use HTTP_PORT. Bind explicitly to
-// 0.0.0.0 so the reverse proxy can always reach the app (localhost-only binds
-// cause 503s behind Hostinger's hcdn edge).
+// Hostinger injects PORT (some environments use HTTP_PORT instead).
+// Never read process.env.HOST — platforms often set it to a hostname that
+// isn't a valid bind address, which crashes the app at startup.
 const PORT = Number(process.env.PORT) || Number(process.env.HTTP_PORT) || 3000;
-const HOST = process.env.HOST || '0.0.0.0';
 const ROOT = path.join(__dirname, 'public');
 
 const MIME = {
@@ -140,6 +139,15 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, HOST, () => {
-  console.log(`Portfolio server running on http://${HOST}:${PORT}`);
+// No host argument: Node binds dual-stack (all interfaces, IPv4+IPv6), which
+// every reverse proxy can reach. A HOST env var or explicit '0.0.0.0' can break
+// that on some platforms.
+server.listen(PORT, () => {
+  const line = `Portfolio server running on port ${PORT}`;
+  console.log(line);
+  console.error(line); // Hostinger captures runtime output in stderr.log
 });
+
+// Surface any crash reason in stderr.log (Hostinger's runtime log destination)
+process.on('uncaughtException', (err) => console.error('uncaughtException:', err));
+process.on('unhandledRejection', (err) => console.error('unhandledRejection:', err));
