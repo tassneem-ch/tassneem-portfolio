@@ -1,0 +1,51 @@
+# ---------------------------------------------------------------
+# Apache config for Hostinger shared hosting (public_html).
+# All assets use relative paths, so this works at the domain root
+# or in a subfolder.
+# ---------------------------------------------------------------
+
+# Default charset
+AddDefaultCharset UTF-8
+
+# Directory listing off
+Options -Indexes
+
+# ----- HTTPS redirect (Hostinger installs free SSL automatically) -----
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Uncomment if you do NOT sit behind a proxy/CDN:
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# ----- Security headers (same set as netlify.toml / _headers) -----
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ----- Compression -----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
+
+# ----- Caching -----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|webp|png|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tasnim Cherif — AI & Software Engineer</title>
+<meta name="description" content="Portfolio of Tasnim Cherif — building machine learning pipelines, AI assistants and cross-platform apps end to end." />
+<meta name="theme-color" content="#07070c" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Tasnim Cherif — AI & Software Engineer" />
+<meta property="og:description" content="Machine learning pipelines, AI assistants and cross-platform apps, built end to end." />
+<meta property="og:image" content="assets/portrait.png" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="fonts.css" />
+<link rel="preload" as="image" href="assets/portrait.webp" />
+<link rel="stylesheet" href="styles.css" />
+<noscript><style>
+  #loader{display:none!important}
+  body{overflow:auto!important;height:auto!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+  .hero__title .word{transform:none!important}
+</style></noscript>
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__name">TASNIM&nbsp;CHERIF</div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <div class="loader__pct"><span id="loaderPct">0</span>%</div>
+  </div>
+  <div class="loader__panels">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- ============ BACKGROUND LAYERS ============ -->
+<canvas id="starfield" aria-hidden="true"></canvas>
+<div class="orbs" aria-hidden="true">
+  <span class="orb orb--1"></span>
+  <span class="orb orb--2"></span>
+  <span class="orb orb--3"></span>
+  <span class="orb orb--4"></span>
+</div>
+<div class="grid-floor" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="scanline" aria-hidden="true"></div>
+
+<!-- ============ CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="nav__brand magnetic" href="#top" data-cursor="link">
+    <span class="nav__mark">TC</span>
+    <span class="nav__brandtext">Tasnim Cherif</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#about" class="magnetic" data-cursor="link">About</a>
+    <a href="#work" class="magnetic" data-cursor="link">Work</a>
+    <a href="#stack" class="magnetic" data-cursor="link">Stack</a>
+    <a href="#contact" class="magnetic" data-cursor="link">Contact</a>
+  </nav>
+  <a class="nav__cta magnetic" data-cursor="link" href="https://github.com/tassneem-ch" target="_blank" rel="noopener">GitHub ↗</a>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero__stage">
+
+      <div class="hero__left" data-reveal>
+        <p class="eyebrow" data-cursor="text"><i class="dot"></i> Hello, I build things that think</p>
+        <h1 class="hero__title">
+          <span class="line"><span class="word" data-split>Tasnim</span></span>
+          <span class="line"><span class="word grad-anim" data-split>Cherif</span></span>
+        </h1>
+        <p class="hero__role">
+          <span class="role-static">I'm</span>
+          <span class="typed" id="typed" aria-live="polite"></span><span class="caret" aria-hidden="true"></span>
+        </p>
+        <p class="hero__blurb">
+          Machine learning pipelines, AI assistants and cross-platform apps —
+          designed, trained and shipped end to end. From catching phishing emails
+          to planning prayer-aware travel routes.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary magnetic" data-cursor="link" href="#work"><span>See my work</span></a>
+          <a class="btn btn--ghost magnetic" data-cursor="link" href="https://www.linkedin.com/in/tassneem-cherif" target="_blank" rel="noopener"><span>LinkedIn ↗</span></a>
+        </div>
+        <ul class="hero__socials">
+          <li><a class="magnetic" data-cursor="link" href="https://github.com/tassneem-ch" target="_blank" rel="noopener">GitHub<em>@tassneem-ch</em></a></li>
+          <li><a class="magnetic" data-cursor="link" href="https://www.linkedin.com/in/tassneem-cherif" target="_blank" rel="noopener">LinkedIn<em>/in/tassneem-cherif</em></a></li>
+        </ul>
+      </div>
+
+      <div class="hero__right">
+        <div class="portrait-scene" id="portraitScene">
+          <div class="portrait-glow" aria-hidden="true"></div>
+          <div class="ring ring--a" aria-hidden="true"></div>
+          <div class="ring ring--b" aria-hidden="true"></div>
+          <div class="ring ring--c" aria-hidden="true"></div>
+
+          <div class="portrait-wrap" id="portraitWrap">
+            <img class="portrait" id="portrait"
+                 src="assets/portrait.webp" onerror="this.onerror=null;this.src='assets/portrait.png'"
+                 alt="Portrait of Tasnim Cherif" draggable="false" />
+          </div>
+
+          <span class="chip chip--1 float" data-cursor="text">Python</span>
+          <span class="chip chip--2 float" data-cursor="text">Dart · Flutter</span>
+          <span class="chip chip--3 float" data-cursor="text">scikit-learn</span>
+          <span class="chip chip--4 float" data-cursor="text">FastAPI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__hint" data-reveal>
+      <span class="mouse"></span>
+      <span>Scroll to explore</span>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>MACHINE&nbsp;LEARNING</span><i>✦</i><span>AI&nbsp;ASSISTANTS</span><i>✦</i><span>FLUTTER</span><i>✦</i><span>DATA&nbsp;SCIENCE</span><i>✦</i><span>PYTHON</span><i>✦</i><span>NLP</span><i>✦</i>
+        <span>MACHINE&nbsp;LEARNING</span><i>✦</i><span>AI&nbsp;ASSISTANTS</span><i>✦</i><span>FLUTTER</span><i>✦</i><span>DATA&nbsp;SCIENCE</span><i>✦</i><span>PYTHON</span><i>✦</i><span>NLP</span><i>✦</i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section about" id="about">
+    <div class="section__head">
+      <span class="section__index" data-reveal>01</span>
+      <h2 class="section__title" data-reveal>About</h2>
+    </div>
+
+    <div class="about__grid">
+      <p class="about__lede" data-reveal>
+        I&nbsp;build <span class="hl">intelligent products end&nbsp;to&nbsp;end</span> — the model,
+        the API and the interface. I care about systems that are honest about
+        their data, useful on a slow connection, and pleasant to look at.
+      </p>
+
+      <div class="about__stats">
+        <div class="stat" data-reveal>
+          <b><span data-count="5">0</span></b>
+          <span>public projects</span>
+        </div>
+        <div class="stat" data-reveal>
+          <b><span data-count="4">0</span></b>
+          <span>AI / ML builds</span>
+        </div>
+        <div class="stat" data-reveal>
+          <b><span data-count="200">0</span></b>
+          <span>tools in J.A.R.V.I.S</span>
+        </div>
+        <div class="stat" data-reveal>
+          <b><span data-count="10">0</span>+</b>
+          <span>languages &amp; frameworks</span>
+        </div>
+      </div>
+
+      <ul class="about__facts">
+        <li data-reveal><span>Focus</span> Machine learning · NLP · Applied AI</li>
+        <li data-reveal><span>Ships with</span> Python · Flutter/Dart · FastAPI · R</li>
+        <li data-reveal><span>Since</span> Feb 2024 on GitHub</li>
+        <li data-reveal><span>Based in</span> Tunisia</li>
+      </ul>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>PROVENANCE OVER GUESSWORK</span><span>•</span>
+        <span>OFFLINE-FIRST</span><span>•</span>
+        <span>HONEST DATA</span><span>•</span>
+        <span>SHIP&nbsp;IT</span><span>•</span>
+        <span>PROVENANCE OVER GUESSWORK</span><span>•</span>
+        <span>OFFLINE-FIRST</span><span>•</span>
+        <span>HONEST DATA</span><span>•</span>
+        <span>SHIP&nbsp;IT</span><span>•</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK ============ -->
+  <section class="section work" id="work">
+    <div class="section__head">
+      <span class="section__index" data-reveal>02</span>
+      <h2 class="section__title" data-reveal>Selected work</h2>
+      <p class="section__sub" data-reveal>Five things I built, from the data layer up.</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card card--wide" data-reveal data-tilt data-cursor="card">
+        <div class="card__glow"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__num">01</span>
+            <span class="card__tags"><i>Flutter</i><i>Dart</i><i>FastAPI</i><i>Python</i></span>
+          </div>
+          <h3 class="card__title">Guide</h3>
+          <p class="card__desc">
+            A prayer-aware travel planner. Real routes, mosques discovered along the way,
+            and an honest view of how each option serves — or breaks — your prayer times.
+            Global-first: UTC instants, IANA timezones, and English, Arabic (RTL) and French.
+            Every screen carries provenance, so a fixture never pretends to be live data.
+          </p>
+          <ul class="card__points">
+            <li>Flutter client for Android + iOS from one codebase</li>
+            <li>FastAPI backend with layered prayer scheduling</li>
+            <li>Never fabricates data — fixture responses are labelled</li>
+          </ul>
+        </div>
+        <a class="card__link" href="https://github.com/tassneem-ch/guide" target="_blank" rel="noopener" aria-label="Open Guide on GitHub">View repo ↗</a>
+      </article>
+
+      <article class="card" data-reveal data-tilt data-cursor="card">
+        <div class="card__glow"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__num">02</span>
+            <span class="card__tags"><i>Python</i><i>NVIDIA NIM</i><i>OpenRouter</i></span>
+          </div>
+          <h3 class="card__title">J.A.R.V.I.S</h3>
+          <p class="card__desc">
+            A voice-first desktop AI assistant with speech in, speech out and
+            <b>200 tools</b> it can call on its own. Ships with a one-command setup
+            and brings your own model key — NVIDIA NIM or OpenRouter, auto-detected
+            from the key shape.
+          </p>
+        </div>
+        <a class="card__link" href="https://github.com/tassneem-ch/desktop-ai-assistant" target="_blank" rel="noopener" aria-label="Open J.A.R.V.I.S on GitHub">View repo ↗</a>
+      </article>
+
+      <article class="card" data-reveal data-tilt data-cursor="card">
+        <div class="card__glow"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__num">03</span>
+            <span class="card__tags"><i>Python</i><i>scikit-learn</i><i>Chrome&nbsp;Extension</i></span>
+          </div>
+          <h3 class="card__title">AI Phishing Detector</h3>
+          <p class="card__desc">
+            An end-to-end ML pipeline that classifies malicious email using both
+            hand-crafted threat indicators and TF-IDF statistical features,
+            trained with Logistic Regression and Random Forest — plus a Chrome
+            extension for real-time protection inside Gmail.
+          </p>
+        </div>
+        <a class="card__link" href="https://github.com/tassneem-ch/AI-Phishing-Detector" target="_blank" rel="noopener" aria-label="Open AI Phishing Detector on GitHub">View repo ↗</a>
+      </article>
+
+      <article class="card" data-reveal data-tilt data-cursor="card">
+        <div class="card__glow"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__num">04</span>
+            <span class="card__tags"><i>R</i><i>NLP</i><i>Modelling</i></span>
+          </div>
+          <h3 class="card__title">ML Fake News Detector</h3>
+          <p class="card__desc">
+            Text classification in R: clean the corpus, engineer the features,
+            compare models and report honestly on what generalises — and what
+            only looked good on the training split.
+          </p>
+        </div>
+        <a class="card__link" href="https://github.com/tassneem-ch/ML-Fake-News-Detector" target="_blank" rel="noopener" aria-label="Open ML Fake News Detector on GitHub">View repo ↗</a>
+      </article>
+
+      <article class="card card--wide" data-reveal data-tilt data-cursor="card">
+        <div class="card__glow"></div>
+        <div class="card__body">
+          <div class="card__top">
+            <span class="card__num">05</span>
+            <span class="card__tags"><i>Jupyter</i><i>pandas</i><i>Data&nbsp;Viz</i></span>
+          </div>
+          <h3 class="card__title">Bakery Sales Analytics</h3>
+          <p class="card__desc">
+            Sales analytics and waste reduction for a bakery production line:
+            find what actually sells, when, and how much is being thrown away —
+            then turn that into a production plan a baker can follow.
+          </p>
+          <ul class="card__points">
+            <li>Exploratory analysis of daily production and sales</li>
+            <li>Waste hotspots identified by product and by hour</li>
+            <li>Recommendations framed for a real production floor</li>
+          </ul>
+        </div>
+        <a class="card__link" href="https://github.com/tassneem-ch/Bakery-Sales-Analytics" target="_blank" rel="noopener" aria-label="Open Bakery Sales Analytics on GitHub">View repo ↗</a>
+      </article>
+
+    </div>
+
+    <div class="work__all" data-reveal>
+      <a class="btn btn--ghost magnetic" data-cursor="link" href="https://github.com/tassneem-ch?tab=repositories" target="_blank" rel="noopener"><span>All repositories on GitHub ↗</span></a>
+    </div>
+  </section>
+
+  <!-- ============ STACK ============ -->
+  <section class="section stack" id="stack">
+    <div class="section__head">
+      <span class="section__index" data-reveal>03</span>
+      <h2 class="section__title" data-reveal>Stack</h2>
+    </div>
+
+    <div class="ribbons" aria-hidden="true">
+      <div class="ribbon" data-dir="left">
+        <div class="ribbon__track">
+          <span>Python</span><span>Flutter</span><span>Dart</span><span>scikit-learn</span><span>pandas</span><span>NumPy</span><span>FastAPI</span><span>Jupyter</span>
+          <span>Python</span><span>Flutter</span><span>Dart</span><span>scikit-learn</span><span>pandas</span><span>NumPy</span><span>FastAPI</span><span>Jupyter</span>
+        </div>
+      </div>
+      <div class="ribbon" data-dir="right">
+        <div class="ribbon__track">
+          <span>R</span><span>NLP</span><span>TF-IDF</span><span>Random Forest</span><span>REST APIs</span><span>Chrome Extensions</span><span>JavaScript</span><span>Git</span>
+          <span>R</span><span>NLP</span><span>TF-IDF</span><span>Random Forest</span><span>REST APIs</span><span>Chrome Extensions</span><span>JavaScript</span><span>Git</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills">
+      <div class="skill" data-reveal data-tilt data-cursor="card">
+        <h3>Applied AI &amp; ML</h3>
+        <p>Feature engineering, text classification, model comparison and evaluation that survives outside the notebook.</p>
+      </div>
+      <div class="skill" data-reveal data-tilt data-cursor="card">
+        <h3>Product engineering</h3>
+        <p>Flutter apps and FastAPI services with offline and demo modes, i18n including RTL, and honest data labelling.</p>
+      </div>
+      <div class="skill" data-reveal data-tilt data-cursor="card">
+        <h3>Data storytelling</h3>
+        <p>Turning messy operational data into a decision someone can act on — the analysis is only half the job.</p>
+      </div>
+      <div class="skill" data-reveal data-tilt data-cursor="card">
+        <h3>Tooling &amp; automation</h3>
+        <p>Desktop assistants, browser extensions and scripts that remove the boring parts of a workflow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact" id="contact">
+    <div class="section__head">
+      <span class="section__index" data-reveal>04</span>
+      <h2 class="section__title" data-reveal>Let's build something</h2>
+    </div>
+
+    <p class="contact__lede" data-reveal>
+      Open to collaborations on AI products, data work and cross-platform apps.
+      The fastest way to reach me is GitHub or LinkedIn.
+    </p>
+
+    <div class="contact__links">
+      <a class="biglink magnetic" data-cursor="link" href="https://github.com/tassneem-ch" target="_blank" rel="noopener" data-reveal>
+        <span class="biglink__label">GitHub</span>
+        <span class="biglink__handle">@tassneem-ch</span>
+        <span class="biglink__arrow">↗</span>
+      </a>
+      <a class="biglink magnetic" data-cursor="link" href="https://www.linkedin.com/in/tassneem-cherif" target="_blank" rel="noopener" data-reveal>
+        <span class="biglink__label">LinkedIn</span>
+        <span class="biglink__handle">/in/tassneem-cherif</span>
+        <span class="biglink__arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="contact__marquee" aria-hidden="true">
+      <div class="marquee__track marquee__track--big">
+        <span>SAY&nbsp;HELLO</span><i>✦</i><span>SAY&nbsp;HELLO</span><i>✦</i><span>SAY&nbsp;HELLO</span><i>✦</i><span>SAY&nbsp;HELLO</span><i>✦</i>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year">2026</span> Tasnim Cherif</span>
+  <span class="footer__mid" aria-hidden="true">built with a canvas, a lot of keyframes, and her actual photo</span>
+  <span><a class="magnetic" data-cursor="link" href="#top">Back to top ↑</a></span>
+</footer>
+
+<a class="totop magnetic" href="#top" aria-label="Back to top" data-cursor="link">
+  <svg viewBox="0 0 48 48" aria-hidden="true">
+    <defs><linearGradient id="totopGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c5cff"/><stop offset=".5" stop-color="#ff4d97"/><stop offset="1" stop-color="#ffb35c"/>
+    </linearGradient></defs>
+    <circle class="totop__ring" cx="24" cy="24" r="21"/>
+  </svg>
+  <span>↑</span>
+</a>
+
+<script src="main.js"></script>
+</body>
+</html>
