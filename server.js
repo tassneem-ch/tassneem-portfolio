@@ -17,7 +17,11 @@ const path = require('path');
 const zlib = require('zlib');
 const crypto = require('crypto');
 
-const PORT = Number(process.env.PORT) || 3000;
+// Hostinger injects PORT; some environments use HTTP_PORT. Bind explicitly to
+// 0.0.0.0 so the reverse proxy can always reach the app (localhost-only binds
+// cause 503s behind Hostinger's hcdn edge).
+const PORT = Number(process.env.PORT) || Number(process.env.HTTP_PORT) || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 const ROOT = path.join(__dirname, 'public');
 
 const MIME = {
@@ -136,6 +140,6 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Portfolio server running on http://localhost:${PORT}`);
+server.listen(PORT, HOST, () => {
+  console.log(`Portfolio server running on http://${HOST}:${PORT}`);
 });
