@@ -131,8 +131,8 @@ What ships for Apache:
   site is relative, so it works at the domain root *or* in a subfolder.
 - No build step, no Node, no database — just static files.
 
-After going live, put your real domain in `sitemap.xml` (it currently holds a
-placeholder URL).
+`sitemap.xml` already points at the live domain
+(`https://tassneem.chrif.net`).
 
 ## Accessibility and performance notes
 
