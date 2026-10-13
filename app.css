@@ -268,17 +268,15 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 }
 
 /* ============================================================
-   MICRO-INTERACTION — portrait hover (added with new image)
-   Slow zoom (scale 1.03) + soft sakura ring glow.
-   Fully disabled under prefers-reduced-motion (see block at
-   the end of this file).
+   MICRO-INTERACTION — portrait hover
+   Soft sakura ring glow; the lean-in transform lives in the
+   AVATAR HEAD-TILT block below (avatar + hero CTA hover).
    ============================================================ */
 .portrait {
   transition: transform .8s cubic-bezier(.22, .8, .3, 1),
               box-shadow   .8s ease;
 }
 .portrait-scene:hover .portrait-stack {
-  transform: scale(1.03);
   box-shadow: 0 0 0 3px rgba(242, 167, 195, .45),
               0 0 28px rgba(242, 167, 195, .5);
 }
@@ -292,7 +290,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
      rotate(1.5deg)    lean angle of the whole avatar
      scale(1.02)       lean-in scale
      .hero:hover       trigger scope (hero text, avatar & CTAs)
-       → narrow it to: .portrait-scene:hover, .hero__actions:hover
+       → narrowed to: .portrait-scene:hover, .hero__actions:hover
    Skipped on touch devices (hover: hover). Runs under
    prefers-reduced-motion too — owner's call (2026-10): hover
    effects stay on; ambient motion (petals, reveals) stays off.
@@ -315,8 +313,10 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   .portrait--tilt {
     transition: opacity var(--tilt-fade, 350ms) ease-in-out;
   }
-  .hero:hover .portrait--tilt { opacity: 1; }   /* cross-fade to tilt */
-  .hero:hover .portrait-stack {                 /* barely-there lean-in */
+  .portrait-scene:hover .portrait--tilt,       /* avatar hover */
+  .hero__actions:hover .portrait--tilt { opacity: 1; }   /* cross-fade to tilt */
+  .portrait-scene:hover .portrait-stack,       /* avatar or CTA hover */
+  .hero__actions:hover .portrait-stack {                 /* barely-there lean-in */
     transform: rotate(1.5deg) scale(1.02);
   }
 }
