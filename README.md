@@ -58,14 +58,14 @@ branch yourself — Hostinger redeploys on every push to that branch.
 ```
 public/
   index.html          the whole page
-  styles.css          all styling and keyframes
-  fonts.css           @font-face rules for the self-hosted webfonts
-  main.js             every interaction (loader, canvas, cursor, tilt…)
+  site.css            all styling and keyframes
+  webfonts.css        @font-face rules for the self-hosted webfonts
+  site.js             petal canvas, scroll reveals, timeline draw, nav
   assets/
     portrait.webp     her photo, background removed, transparent PNG-style alpha
     portrait.png      same image as a fallback
-    fonts/            Syne + Outfit woff2 (latin + latin-ext)
-    favicon.svg
+    fonts/            Quicksand + Nunito variable woff2 (latin + latin-ext)
+    mark.svg          sakura favicon
 worker.js             static-asset entry point
 site.manifest.json    deploy manifest
 ```

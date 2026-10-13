@@ -68,7 +68,7 @@ $server = Start-Process node -ArgumentList "server.js" -PassThru -WindowStyle Hi
 $failed = $false
 try {
   Start-Sleep -Seconds 2
-  foreach ($path in @("/", "/styles.css", "/fonts.css", "/main.js", "/assets/portrait.webp", "/assets/favicon.svg", "/assets/fonts/quicksand-latin.woff2", "/assets/fonts/nunito-latin.woff2")) {
+  foreach ($path in @("/", "/site.css", "/webfonts.css", "/site.js", "/assets/portrait.webp", "/assets/mark.svg", "/assets/fonts/quicksand-latin.woff2", "/assets/fonts/nunito-latin.woff2")) {
     $code = $null
     for ($i = 0; $i -lt 5 -and -not $code; $i++) {
       try { $code = (Invoke-WebRequest -Uri "http://localhost:$port$path" -UseBasicParsing -TimeoutSec 5).StatusCode }
@@ -106,12 +106,19 @@ Write-Host "    Pushed: $Message" -ForegroundColor Green
 
 # ---------------- 4. confirm the live site ----------------
 Write-Host "==> Waiting for Hostinger to redeploy (usually 1-2 min)..." -ForegroundColor Cyan
+$stamp = Get-Date -Format yyyyMMddHHmmss
 $ok = $false
 for ($i = 0; $i -lt 12; $i++) {
   Start-Sleep -Seconds 15
   try {
-    $r = Invoke-WebRequest -Uri "$Live/?_=$(Get-Date -Format yyyyMMddHHmmss)" -UseBasicParsing -TimeoutSec 15
-    if ($r.StatusCode -eq 200 -and $r.Content -match '<html') { $ok = $true; break }
+    $r = Invoke-WebRequest -Uri "$Live/?_=$stamp" -UseBasicParsing -TimeoutSec 15
+    # content check (not just 200): the served HTML must reference the CURRENT
+    # asset names, so a stale/edge-cached page can never pass as deployed.
+    if ($r.StatusCode -eq 200 -and $r.Content -match '<html' -and $r.Content -match 'site\.css' -and $r.Content -notmatch 'styles\.css') {
+      $css = (Invoke-WebRequest -Uri "$Live/site.css?_=$stamp" -UseBasicParsing -TimeoutSec 15).Content
+      $js  = (Invoke-WebRequest -Uri "$Live/site.js?_=$stamp"  -UseBasicParsing -TimeoutSec 15).Content
+      if ($css -match '--sakura' -and $js -match 'CHERRY BLOSSOM PETALS') { $ok = $true; break }
+    }
   } catch { }
   Write-Host "    ...still deploying ($(($i+1)*15)s)" -ForegroundColor DarkGray
 }
