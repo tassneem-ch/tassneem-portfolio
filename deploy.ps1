@@ -68,7 +68,7 @@ $server = Start-Process node -ArgumentList "server.js" -PassThru -WindowStyle Hi
 $failed = $false
 try {
   Start-Sleep -Seconds 2
-  foreach ($path in @("/", "/styles.css", "/main.js", "/assets/portrait.webp", "/assets/favicon.svg", "/assets/fonts/f1.woff2")) {
+  foreach ($path in @("/", "/styles.css", "/fonts.css", "/main.js", "/assets/portrait.webp", "/assets/favicon.svg", "/assets/fonts/quicksand-latin.woff2", "/assets/fonts/nunito-latin.woff2")) {
     $code = $null
     for ($i = 0; $i -lt 5 -and -not $code; $i++) {
       try { $code = (Invoke-WebRequest -Uri "http://localhost:$port$path" -UseBasicParsing -TimeoutSec 5).StatusCode }

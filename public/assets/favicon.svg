@@ -1,12 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7c5cff"/>
-      <stop offset=".5" stop-color="#ff4d97"/>
-      <stop offset="1" stop-color="#ffb35c"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="16" fill="url(#g)"/>
-  <path d="M14 22h20M24 22v22" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
-  <path d="M52 24c-1.6-3.2-4.4-5-8-5-6.2 0-10 4.2-10 10.6C34 36 37.8 40 44 40c3.6 0 6.4-1.8 8-5" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <rect width="64" height="64" rx="14" fill="#FFF9F0"/>
+  <g transform="translate(32,32)">
+    <g fill="#F2A7C3">
+      <path d="M0,-2C6,-12 4,-22 0,-26C-4,-22 -6,-12 0,-2Z"/>
+      <path d="M0,-2C6,-12 4,-22 0,-26C-4,-22 -6,-12 0,-2Z" transform="rotate(72)"/>
+      <path d="M0,-2C6,-12 4,-22 0,-26C-4,-22 -6,-12 0,-2Z" transform="rotate(144)"/>
+      <path d="M0,-2C6,-12 4,-22 0,-26C-4,-22 -6,-12 0,-2Z" transform="rotate(216)"/>
+      <path d="M0,-2C6,-12 4,-22 0,-26C-4,-22 -6,-12 0,-2Z" transform="rotate(288)"/>
+    </g>
+    <circle r="5.5" fill="#FBE8C8"/>
+  </g>
 </svg>
