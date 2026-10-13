@@ -58,11 +58,11 @@ branch yourself — Hostinger redeploys on every push to that branch.
 ```
 public/
   index.html          the whole page
-  site.css            all styling and keyframes
+  app.css             all styling and keyframes
   webfonts.css        @font-face rules for the self-hosted webfonts
-  site.js             petal canvas, scroll reveals, timeline draw, nav
+  app.js              petal canvas, scroll reveals, timeline draw, nav
   assets/
-    tasnim-portrait.png  her photo (square, cover-fit in the blob frame)
+    tasnim-cutout.png   her photo, background removed (transparent, 900×900)
     fonts/            Quicksand + Nunito variable woff2 (latin + latin-ext)
     mark.svg          sakura favicon
 worker.js             static-asset entry point
@@ -71,17 +71,20 @@ site.manifest.json    deploy manifest
 
 ## The hero photo
 
-`assets/tasnim-portrait.png` is her digital portrait (1294×1294 square,
-69 KB). It fills the blob frame with `object-fit: cover`, so any square
-image dropped in at the same path keeps the layout identical.
+`assets/tasnim-cutout.png` is her digital portrait: background removed
+(edge flood-fill to transparency), 900×900 RGBA, 288 KB. The blob gradient
+shows through the transparent areas, so it reads as a cut-out. It fills the
+blob frame with `object-fit: cover`, so any square image dropped in at the
+same path keeps the layout identical.
 
 It floats gently and zooms slowly on hover with a soft pink ring glow.
 The floating chips, rings and gradient blob around it are separate
 decorative layers.
 
-**Swapping in a new photo:** replace `public/assets/tasnim-portrait.png`
-with any square image. Nothing else needs changing — the frame, glow,
-chips and mask all scale with it.
+**Swapping in a new photo:** replace `public/assets/tasnim-cutout.png`
+with any square image — an opaque one still works (it just covers the
+blob), a transparent PNG keeps the cut-out look. Nothing else needs
+changing — the frame, glow, chips and mask all scale with it.
 
 ## Deploying
 
@@ -96,9 +99,12 @@ dependencies. Point any static host at it.
 | **GitHub Pages** | publish the `public/` folder (e.g. an Actions workflow with `path: public`) |
 | **Firebase / Render / Fly static** | serve `public/` as the document root |
 
-`public/_headers` carries the security headers and immutable asset caching on
-hosts that understand it; `netlify.toml` and `vercel.json` repeat the same
-headers so it works on those hosts too. `robots.txt` and `sitemap.xml` are
+`public/_headers` carries the security headers and cache policy on hosts that
+understand it: **everything revalidates (`no-cache`), only `/assets/fonts/*`
+is pinned immutable** (fonts get a new filename whenever replaced) — this
+guarantees in-place edits to CSS/JS/images always show up immediately;
+`netlify.toml` and `vercel.json` repeat the same headers so it works on those
+hosts too. `robots.txt` and `sitemap.xml` are
 included — update the domain in `sitemap.xml` once you know your URL.
 
 `worker.js` + `site.manifest.json` exist only for the Cloudflare-Worker-style
@@ -135,7 +141,7 @@ Upload-ready archive: **`hostinger-nodejs.zip`** (contains `server.js`,
 
 - Correct MIME types for every asset (verified against the live responses)
 - gzip for HTML/CSS/JS (~4× smaller on `styles.css`: 29 KB → 7 KB)
-- `ETag` + `304 Not Modified` revalidation, `immutable` caching for `/assets/`
+- `ETag` + `304 Not Modified` revalidation; `immutable` caching for `.woff2` fonts only — all other files revalidate so in-place edits appear immediately
 - A styled `404.html` matching the site palette
 - Path-traversal and dotfile protection (`.htaccess`, `.git`, `.env` → 404)
 - The same security headers as the Apache/Netlify/Cloudflare configs

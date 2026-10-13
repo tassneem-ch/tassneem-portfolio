@@ -77,11 +77,10 @@ const SECURITY_HEADERS = {
 };
 
 function cacheControlFor(relPath, ext) {
-  if (relPath.startsWith('assets/') || /\.(woff2?|webp|png|jpe?g|gif|svg|ico)$/i.test(ext)) {
-    return 'public, max-age=31536000, immutable';
-  }
-  if (ext === '.html') return 'no-cache';
-  return 'public, max-age=86400';
+  // Fonts get a NEW filename when replaced → safe to pin forever.
+  // Everything else can change in place → always revalidate (cheap 304s).
+  if (/\.woff2?$/i.test(ext)) return 'public, max-age=31536000, immutable';
+  return 'no-cache';
 }
 
 function safeJoin(root, target) {

@@ -33,19 +33,26 @@ Options -Indexes
 </IfModule>
 
 # ----- Caching -----
+# Files are NOT content-hashed, so anything that can change without a
+# filename change (HTML, CSS, JS, images) must always revalidate —
+# otherwise browsers keep serving stale versions for months (this
+# caused two live incidents already). 304 responses keep it cheap.
+# Only fonts are pinned long-term: they get a NEW filename whenever
+# they are replaced.
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 0 seconds"
+  ExpiresByType application/javascript "access plus 0 seconds"
+  ExpiresByType image/png "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 0 seconds"
+  ExpiresByType image/svg+xml "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(woff2|webp|png|svg)$">
+  Header set Cache-Control "no-cache"
+  <FilesMatch "\.woff2$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 </IfModule>

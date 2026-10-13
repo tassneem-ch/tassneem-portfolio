@@ -68,7 +68,7 @@ $server = Start-Process node -ArgumentList "server.js" -PassThru -WindowStyle Hi
 $failed = $false
 try {
   Start-Sleep -Seconds 2
-  foreach ($path in @("/", "/site.css", "/webfonts.css", "/site.js", "/assets/tasnim-portrait.png", "/assets/mark.svg", "/assets/fonts/quicksand-latin.woff2", "/assets/fonts/nunito-latin.woff2")) {
+  foreach ($path in @("/", "/app.css", "/webfonts.css", "/app.js", "/assets/tasnim-cutout.png", "/assets/mark.svg", "/assets/fonts/quicksand-latin.woff2", "/assets/fonts/nunito-latin.woff2")) {
     $code = $null
     for ($i = 0; $i -lt 5 -and -not $code; $i++) {
       try { $code = (Invoke-WebRequest -Uri "http://localhost:$port$path" -UseBasicParsing -TimeoutSec 5).StatusCode }
@@ -114,10 +114,10 @@ for ($i = 0; $i -lt 12; $i++) {
     $r = Invoke-WebRequest -Uri "$Live/?_=$stamp" -UseBasicParsing -TimeoutSec 15
     # content check (not just 200): the served HTML must reference the CURRENT
     # asset names, so a stale/edge-cached page can never pass as deployed.
-    if ($r.StatusCode -eq 200 -and $r.Content -match '<html' -and $r.Content -match 'site\.css' -and $r.Content -notmatch 'styles\.css') {
-      $css = (Invoke-WebRequest -Uri "$Live/site.css?_=$stamp" -UseBasicParsing -TimeoutSec 15).Content
-      $js  = (Invoke-WebRequest -Uri "$Live/site.js?_=$stamp"  -UseBasicParsing -TimeoutSec 15).Content
-      if ($css -match '--sakura' -and $js -match 'CHERRY BLOSSOM PETALS') { $ok = $true; break }
+    if ($r.StatusCode -eq 200 -and $r.Content -match '<html' -and $r.Content -match 'app\.css' -and $r.Content -notmatch 'site\.css|styles\.css') {
+      $css = (Invoke-WebRequest -Uri "$Live/app.css?_=$stamp" -UseBasicParsing -TimeoutSec 15).Content
+      $js  = (Invoke-WebRequest -Uri "$Live/app.js?_=$stamp"  -UseBasicParsing -TimeoutSec 15).Content
+      if ($css -match 'above section bands' -and $js -match 'CHERRY BLOSSOM PETALS') { $ok = $true; break }
     }
   } catch { }
   Write-Host "    ...still deploying ($(($i+1)*15)s)" -ForegroundColor DarkGray

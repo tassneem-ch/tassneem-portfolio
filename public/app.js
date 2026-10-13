@@ -108,7 +108,7 @@
     this.rot = rand(0, Math.PI * 2);
     this.rotSpeed = rand(-0.6, 0.6) / 1000;     // rad per ms
     this.color = COLORS[(Math.random() * COLORS.length) | 0];
-    this.alpha = rand(0.55, 0.95);
+    this.alpha = rand(0.5, 0.85);   // kept ≤.85 so petals over text stay legible
     this.gustVX = 0;
   };
 
