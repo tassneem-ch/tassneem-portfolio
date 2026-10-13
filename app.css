@@ -293,8 +293,9 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
      scale(1.02)       lean-in scale
      .hero:hover       trigger scope (hero text, avatar & CTAs)
        → narrow it to: .portrait-scene:hover, .hero__actions:hover
-   Skipped on touch devices (hover: hover) and under
-   prefers-reduced-motion (see block at the end of this file).
+   Skipped on touch devices (hover: hover). Runs under
+   prefers-reduced-motion too — owner's call (2026-10): hover
+   effects stay on; ambient motion (petals, reveals) stays off.
    ============================================================ */
 .portrait-stack {
   position: absolute;
@@ -310,7 +311,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 }
 .portrait--tilt { opacity: 0; }  /* hidden twin, sits on top */
 
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+@media (hover: hover) {
   .portrait--tilt {
     transition: opacity var(--tilt-fade, 350ms) ease-in-out;
   }
@@ -632,6 +633,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   .hero__title .word, [data-reveal] { opacity: 1; transform: none; }
   .timeline__line { transform: scaleY(1); }
   /* portrait hover zoom must be fully static here too */
-  .portrait-scene:hover .portrait,
-  .portrait-scene:hover .portrait-stack { transform: none; box-shadow: none; }
+  .portrait-scene:hover .portrait { transform: none; box-shadow: none; }
+  /* note: .portrait-stack lean/zoom + tilt cross-fade intentionally
+     NOT neutralized — owner's call to keep hover effects running */
 }
