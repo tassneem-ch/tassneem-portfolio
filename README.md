@@ -62,8 +62,7 @@ public/
   webfonts.css        @font-face rules for the self-hosted webfonts
   site.js             petal canvas, scroll reveals, timeline draw, nav
   assets/
-    portrait.webp     her photo, background removed, transparent PNG-style alpha
-    portrait.png      same image as a fallback
+    tasnim-portrait.png  her photo (square, cover-fit in the blob frame)
     fonts/            Quicksand + Nunito variable woff2 (latin + latin-ext)
     mark.svg          sakura favicon
 worker.js             static-asset entry point
@@ -72,19 +71,17 @@ site.manifest.json    deploy manifest
 
 ## The hero photo
 
-`assets/portrait.png` / `.webp` is her photo with the background removed
-(background-removal model, then resized to 512×512). It is a cut-out with a
-transparent background, so it sits on the animated backdrop rather than in a
-framed box. The bottom edge is faded with a CSS mask because the source photo
-is cropped at the shoulders.
+`assets/tasnim-portrait.png` is her digital portrait (1294×1294 square,
+69 KB). It fills the blob frame with `object-fit: cover`, so any square
+image dropped in at the same path keeps the layout identical.
 
-It floats gently, drifts a few pixels toward the pointer (parallax) and fades
-in on load. The floating chips, rings and gradient glow around it are separate
+It floats gently and zooms slowly on hover with a soft pink ring glow.
+The floating chips, rings and gradient blob around it are separate
 decorative layers.
 
-**Swapping in a new photo:** drop a square, transparent-background image at
-`public/assets/portrait.png` and `public/assets/portrait.webp`. Nothing else
-needs changing — the frame, glow, chips and mask all scale with it.
+**Swapping in a new photo:** replace `public/assets/tasnim-portrait.png`
+with any square image. Nothing else needs changing — the frame, glow,
+chips and mask all scale with it.
 
 ## Deploying
 

@@ -262,8 +262,25 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   position: absolute; inset: 4%;
   width: 92%; height: 92%;
   object-fit: cover;
+  aspect-ratio: 1;
   object-position: top center;
   border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%;
+}
+
+/* ============================================================
+   MICRO-INTERACTION — portrait hover (added with new image)
+   Slow zoom (scale 1.03) + soft sakura ring glow.
+   Fully disabled under prefers-reduced-motion (see block at
+   the end of this file).
+   ============================================================ */
+.portrait {
+  transition: transform .8s cubic-bezier(.22, .8, .3, 1),
+              box-shadow   .8s ease;
+}
+.portrait-scene:hover .portrait {
+  transform: scale(1.03);
+  box-shadow: 0 0 0 3px rgba(242, 167, 195, .45),
+              0 0 28px rgba(242, 167, 195, .5);
 }
 
 .chip {
@@ -577,4 +594,6 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   }
   .hero__title .word, [data-reveal] { opacity: 1; transform: none; }
   .timeline__line { transform: scaleY(1); }
+  /* portrait hover zoom must be fully static here too */
+  .portrait-scene:hover .portrait { transform: none; box-shadow: none; }
 }
