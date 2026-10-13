@@ -277,10 +277,47 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   transition: transform .8s cubic-bezier(.22, .8, .3, 1),
               box-shadow   .8s ease;
 }
-.portrait-scene:hover .portrait {
+.portrait-scene:hover .portrait-stack {
   transform: scale(1.03);
   box-shadow: 0 0 0 3px rgba(242, 167, 195, .45),
               0 0 28px rgba(242, 167, 195, .5);
+}
+
+/* ============================================================
+   AVATAR HEAD-TILT — stacked cross-fade (added with tilted twin)
+   Two pixel-aligned layers: neutral base + tilted duplicate,
+   stacked in .portrait-stack so they read as ONE moving avatar.
+   Tweakables:
+     var(--tilt-fade)  cross-fade duration (default 350ms)
+     rotate(1.5deg)    lean angle of the whole avatar
+     scale(1.02)       lean-in scale
+     .hero:hover       trigger scope (hero text, avatar & CTAs)
+       → narrow it to: .portrait-scene:hover, .hero__actions:hover
+   Skipped on touch devices (hover: hover) and under
+   prefers-reduced-motion (see block at the end of this file).
+   ============================================================ */
+.portrait-stack {
+  position: absolute;
+  inset: 4%;                /* identical box to the old single .portrait */
+  border-radius: 42% 58% 55% 45% / 48% 42% 58% 52%;
+  overflow: hidden;         /* both layers clipped to the blob shape */
+  transition: transform .35s ease-in-out, box-shadow .8s ease;
+}
+.portrait-stack .portrait {  /* both layers fill the stack exactly */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.portrait--tilt { opacity: 0; }  /* hidden twin, sits on top */
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .portrait--tilt {
+    transition: opacity var(--tilt-fade, 350ms) ease-in-out;
+  }
+  .hero:hover .portrait--tilt { opacity: 1; }   /* cross-fade to tilt */
+  .hero:hover .portrait-stack {                 /* barely-there lean-in */
+    transform: rotate(1.5deg) scale(1.02);
+  }
 }
 
 .chip {
@@ -595,5 +632,6 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   .hero__title .word, [data-reveal] { opacity: 1; transform: none; }
   .timeline__line { transform: scaleY(1); }
   /* portrait hover zoom must be fully static here too */
-  .portrait-scene:hover .portrait { transform: none; box-shadow: none; }
+  .portrait-scene:hover .portrait,
+  .portrait-scene:hover .portrait-stack { transform: none; box-shadow: none; }
 }

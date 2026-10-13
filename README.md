@@ -63,6 +63,7 @@ public/
   app.js              petal canvas, scroll reveals, timeline draw, nav
   assets/
     tasnim-cutout.png   her photo, background removed (transparent, 900×900)
+    tasnim-tilt.png     head-tilt twin of the same photo (same canvas, 900×900)
     fonts/            Quicksand + Nunito variable woff2 (latin + latin-ext)
     mark.svg          sakura favicon
 worker.js             static-asset entry point
@@ -80,6 +81,15 @@ same path keeps the layout identical.
 It floats gently and zooms slowly on hover with a soft pink ring glow.
 The floating chips, rings and gradient blob around it are separate
 decorative layers.
+
+**Head-tilt hover:** `assets/tasnim-tilt.png` is a second export of the
+same photo with a slight head tilt, background-removed and aligned to the
+same canvas (body pixels match the base layer to <1/255 on average).
+Both layers are stacked in `.portrait-stack`; hovering anywhere in the
+hero cross-fades to the tilt (350 ms) with a barely-there lean
+(`rotate(1.5deg) scale(1.02)`). Touch devices and
+`prefers-reduced-motion` always show the neutral version.
+Tweakables are commented in the `AVATAR HEAD-TILT` block in `app.css`.
 
 **Swapping in a new photo:** replace `public/assets/tasnim-cutout.png`
 with any square image — an opaque one still works (it just covers the
