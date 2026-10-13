@@ -87,8 +87,9 @@ same photo with a slight head tilt, background-removed and aligned to the
 same canvas (body pixels match the base layer to <1/255 on average).
 Both layers are stacked in `.portrait-stack`; hovering anywhere in the
 hero cross-fades to the tilt (350 ms) with a barely-there lean
-(`rotate(1.5deg) scale(1.02)`). Touch devices and
-`prefers-reduced-motion` always show the neutral version.
+(`rotate(1.5deg) scale(1.02)`). Touch devices always show the neutral
+version; the hover effect also runs under `prefers-reduced-motion`
+(owner's call — ambient motion like petals still respects it).
 Tweakables are commented in the `AVATAR HEAD-TILT` block in `app.css`.
 
 **Swapping in a new photo:** replace `public/assets/tasnim-cutout.png`
