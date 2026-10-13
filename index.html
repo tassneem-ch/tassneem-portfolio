@@ -16,6 +16,7 @@
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
 <link rel="stylesheet" href="webfonts.css" />
 <link rel="preload" as="image" href="assets/tasnim-cutout.png" />
+<link rel="preload" as="image" href="assets/tasnim-tilt.png" />
 <link rel="stylesheet" href="app.css" />
 <noscript><style>
   [data-reveal]{opacity:1!important;transform:none!important}
@@ -97,8 +98,12 @@
         <div class="portrait-scene" data-reveal style="--d:.3s">
           <div class="portrait-blob" aria-hidden="true"></div>
           <div class="portrait-ring" aria-hidden="true"></div>
-          <img class="portrait" src="assets/tasnim-cutout.png"
-               alt="Portrait of Tasnim Cherif" draggable="false" />
+          <div class="portrait-stack">
+            <img class="portrait" src="assets/tasnim-cutout.png"
+                 alt="Portrait of Tasnim Cherif" draggable="false" />
+            <img class="portrait portrait--tilt" src="assets/tasnim-tilt.png"
+                 alt="" aria-hidden="true" draggable="false" />
+          </div>
           <span class="chip chip--1">Power&nbsp;BI</span>
           <span class="chip chip--2">Python&nbsp;·&nbsp;pandas</span>
           <span class="chip chip--3">Forecasting</span>
