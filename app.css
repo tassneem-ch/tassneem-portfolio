@@ -401,7 +401,7 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 /* ---------- skills ---------- */
 .skills {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* 4 categories -> equal 2x2 */
   gap: 1.4rem;
 }
 @media (max-width: 900px) { .skills { grid-template-columns: 1fr; } }
