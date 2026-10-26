@@ -60,7 +60,8 @@ public/
   index.html          the whole page
   app.css             all styling and keyframes
   webfonts.css        @font-face rules for the self-hosted webfonts
-  app.js              petal canvas, scroll reveals, timeline draw, nav
+  app.js              petal canvas, scroll reveals, timeline draw, nav,
+                      story-path switching + expandable project stories
   assets/
     tasnim-cutout.png   her photo, background removed (transparent, 900×900)
     tasnim-tilt.png     head-tilt twin of the same photo (same canvas, 900×900)
@@ -69,6 +70,28 @@ public/
 worker.js             static-asset entry point
 site.manifest.json    deploy manifest
 ```
+
+## Story paths (`#stories`)
+
+Right below the hero, "Choose your path" offers three narrative journeys —
+**The Opportunity Seeker / Problem Solver**, **The Maker** and
+**The Experimenter** — each a different angle on the same work:
+
+- The chooser is a real `role="tablist"` (←/→ arrow keys switch paths);
+  each path card carries its own accent via `--path-accent`
+  (matcha / sakura / butter).
+- A path panel reads as a story: intro → project stories → experience &
+  background → skills chips → closing thought. Every project story has a
+  **"The full story ↓"** expander (`aria-expanded` button) revealing the
+  full description plus its GitHub/live link — nothing is duplicated away.
+- Projects repeat across paths on purpose (Tandim in all three incl. the
+  "AI in Tandim" angle; J.A.R.V.I.S. in Maker and Experimenter) with the
+  same facts, tags and status chips everywhere ("Live" for Tandim,
+  "Work in progress" for the prayer-aware Route Planner).
+- "← All paths" returns to the chooser; "Next: …" flows between narratives.
+- **No-JS fallback:** panels are only hidden when `html.js` is set by the
+  inline head script — without JavaScript all three stories read as plain
+  stacked sections.
 
 ## The hero photo
 

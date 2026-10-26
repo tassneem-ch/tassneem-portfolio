@@ -107,25 +107,34 @@ Write-Host "    Pushed: $Message" -ForegroundColor Green
 # ---------------- 4. confirm the live site ----------------
 Write-Host "==> Waiting for Hostinger to redeploy (usually 1-2 min)..." -ForegroundColor Cyan
 $stamp = Get-Date -Format yyyyMMddHHmmss
+# the ONLY trustworthy content check: the served HTML must be byte-identical
+# (CRLF-normalized) to the local file that was just pushed. Marker-based
+# checks can false-pass on a stale page whose markers still exist.
+$localHtml = (Get-Content (Join-Path $Site "index.html") -Raw) -replace "`r`n", "`n"
+$localSha = [System.BitConverter]::ToString(
+  [System.Security.Cryptography.SHA256]::Create().ComputeHash(
+    [System.Text.Encoding]::UTF8.GetBytes($localHtml))).Replace("-", "")
 $ok = $false
-for ($i = 0; $i -lt 12; $i++) {
+for ($i = 0; $i -lt 20; $i++) {
   Start-Sleep -Seconds 15
   try {
     $r = Invoke-WebRequest -Uri "$Live/?_=$stamp" -UseBasicParsing -TimeoutSec 15
-    # content check (not just 200): the served HTML must reference the CURRENT
-    # asset names, so a stale/edge-cached page can never pass as deployed.
-    if ($r.StatusCode -eq 200 -and $r.Content -match '<html' -and $r.Content -match 'app\.css' -and $r.Content -notmatch 'site\.css|styles\.css') {
-      $css = (Invoke-WebRequest -Uri "$Live/app.css?_=$stamp" -UseBasicParsing -TimeoutSec 15).Content
-      $js  = (Invoke-WebRequest -Uri "$Live/app.js?_=$stamp"  -UseBasicParsing -TimeoutSec 15).Content
-      if ($css -match 'above section bands' -and $js -match 'CHERRY BLOSSOM PETALS') { $ok = $true; break }
+    if ($r.StatusCode -eq 200 -and $r.Content -match '<html') {
+      $liveNorm = ($r.Content) -replace "`r`n", "`n"
+      $liveSha = [System.BitConverter]::ToString(
+        [System.Security.Cryptography.SHA256]::Create().ComputeHash(
+          [System.Text.Encoding]::UTF8.GetBytes($liveNorm))).Replace("-", "")
+      if ($liveSha -eq $localSha) { $ok = $true; break }
+      Write-Host "    ...page served but still stale ($(($i+1)*15)s)" -ForegroundColor DarkGray
     }
   } catch { }
-  Write-Host "    ...still deploying ($(($i+1)*15)s)" -ForegroundColor DarkGray
 }
 if ($ok) {
   Write-Host "`nLIVE - $Live  (hard-refresh with Ctrl+F5)" -ForegroundColor Green
 } else {
-  Write-Host "`nThe live site did not return 200 yet. Check hPanel, or roll back:" -ForegroundColor Yellow
+  Write-Host "`nLive site still serves STALE content after 5 min." -ForegroundColor Yellow
+  Write-Host "GitHub has the push, but Hostinger did not redeploy - check the" -ForegroundColor Yellow
+  Write-Host "GitHub integration in hPanel, or re-trigger with an empty commit." -ForegroundColor Yellow
   Write-Host "  deploy.ps1 -Rollback             (lists recent deploys)"
   Write-Host "  deploy.ps1 -Rollback -Commit <sha>"
 }
