@@ -423,7 +423,9 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
 .skill h3 { font-family: var(--font-head); font-size: 1.25rem; }
 
 .skill__tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-.skill__tags li {
+.skill__tags li,
+.story__tags li,
+.story__skills li {
   background: var(--pink);
   border-radius: 999px;
   padding: .3rem .85rem;
@@ -637,3 +639,112 @@ button { font: inherit; background: none; border: 0; cursor: pointer; color: inh
   /* note: .portrait-stack lean/zoom + tilt cross-fade intentionally
      NOT neutralized — owner's call to keep hover effects running */
 }
+
+/* ============================================================
+   STORY PATHS — three narrative journeys
+   Chooser cards (role=tab) + active panel + expandable stories.
+   Each path carries its own accent via --path-accent:
+     seeker = matcha · maker = sakura · experimenter = butter
+   Panels are only hidden when JS is on (html.js); without JS
+   all three read as plain stacked stories.
+   ============================================================ */
+button.btn { appearance: none; -webkit-appearance: none; border: none; cursor: pointer; }
+
+.path-chooser { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+@media (max-width: 900px) { .path-chooser { grid-template-columns: 1fr; } }
+
+.path-card {
+  --path-accent: var(--green);
+  appearance: none; -webkit-appearance: none;
+  text-align: left; font: inherit; color: inherit; cursor: pointer;
+  display: flex; flex-direction: column; gap: .55rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--path-accent);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.6rem;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.path-card--maker { --path-accent: var(--sakura); }
+.path-card--experimenter { --path-accent: #FBE8C8; }
+.path-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hi); }
+.path-card[aria-selected="true"] {
+  border-color: var(--path-accent);
+  box-shadow: 0 0 0 2px var(--path-accent), var(--shadow-hi);
+}
+.path-card__num { font-family: var(--font-head); font-weight: 700; font-size: .95rem; color: var(--green); }
+.path-card--maker .path-card__num { color: var(--sakura); }
+.path-card--experimenter .path-card__num { color: var(--ink-soft); }
+.path-card__name { font-family: var(--font-head); font-weight: 700; font-size: 1.12rem; line-height: 1.3; }
+.path-card__tease { font-size: .93rem; color: var(--ink-soft); line-height: 1.55; }
+
+.path-panel {
+  --path-accent: var(--green);
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--path-accent);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.4rem, 4vw, 2.6rem);
+  box-shadow: var(--shadow);
+  margin-top: 1.6rem;
+}
+.path-panel--maker { --path-accent: var(--sakura); }
+.path-panel--experimenter { --path-accent: #FBE8C8; }
+html.js .path-panel { display: none; }
+html.js .path-panel.is-active { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .path-panel.is-active { animation: path-in .5s ease both; }
+}
+@keyframes path-in { from { opacity: 0; transform: translateY(16px); } }
+
+.path-panel__intro { font-size: 1.05rem; line-height: 1.75; max-width: 62ch; }
+.story-label {
+  font-family: var(--font-head); font-weight: 700; font-size: .78rem;
+  text-transform: uppercase; letter-spacing: .16em; color: var(--ink-soft);
+  margin: 2rem 0 .9rem;
+}
+.story {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--path-accent);
+  border-radius: 18px;
+  padding: 1.2rem 1.4rem;
+  background: var(--cream, #FFF9F0);
+  margin-bottom: 1rem;
+}
+.story__meta { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; margin-bottom: .3rem; }
+.story__kind { font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: var(--ink-soft); }
+.story__status {
+  font-size: .72rem; font-weight: 700; padding: .18rem .6rem;
+  border-radius: 999px; background: #FBE8C8; color: var(--ink);
+}
+.story__status--live { background: var(--matcha, #E9F3E3); }
+.story__title { font-family: var(--font-head); font-size: 1.15rem; margin-bottom: .35rem; }
+.story__line { line-height: 1.65; }
+.story__tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
+.story__more {
+  appearance: none; -webkit-appearance: none; border: none; background: none;
+  cursor: pointer; padding: 0; margin-top: .8rem;
+  font-family: var(--font-head); font-weight: 700; font-size: .88rem;
+  color: var(--green); text-decoration: underline; text-underline-offset: 3px;
+}
+.story__more:hover { color: var(--sakura); }
+.story__detail { margin-top: .9rem; padding-top: .9rem; border-top: 1px dashed var(--line); font-size: .95rem; line-height: 1.65; }
+.story__detail[hidden] { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .story__detail:not([hidden]) { animation: detail-in .3s ease both; }
+}
+@keyframes detail-in { from { opacity: 0; transform: translateY(-6px); } }
+.story__detail a { font-weight: 700; }
+
+.story__context { list-style: none; display: grid; gap: .9rem; }
+.story__context li b { display: block; font-family: var(--font-head); margin-bottom: .15rem; }
+.story__context li span { color: var(--ink-soft); font-size: .96rem; line-height: 1.6; }
+.story__skills { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; }
+
+.path-panel__close {
+  font-style: italic; font-size: 1.12rem; text-align: center;
+  margin: 2.2rem 0 1.6rem; padding: 1.2rem 1rem;
+  border-block: 1px dashed var(--line);
+}
+.path-panel__nav { display: flex; gap: 1rem; justify-content: space-between; flex-wrap: wrap; }
