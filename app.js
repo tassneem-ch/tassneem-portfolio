@@ -228,3 +228,71 @@
     }
   });
 })();
+
+/* ============================================================
+   STORY PATHS — choose a path, switch narratives,
+   expand project details. Tablist semantics + arrow keys.
+   ============================================================ */
+(function () {
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".path-card[role=tab]"));
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".path-panel"));
+  var chooser = document.querySelector(".path-chooser");
+  if (!tabs.length || !panels.length) return;
+
+  function activate(id, moveFocus) {
+    tabs.forEach(function (t) {
+      var on = t.getAttribute("data-path") === id;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.setAttribute("tabindex", on ? "0" : "-1");
+      if (on && moveFocus) t.focus();
+    });
+    panels.forEach(function (p) {
+      var on = p.id === "path-" + id;
+      p.classList.toggle("is-active", on);
+      if (on) {
+        // reveal children right away — the scroll observer can't be
+        // trusted for very tall or just-shown panels
+        Array.prototype.forEach.call(p.querySelectorAll("[data-reveal]"), function (el) {
+          el.classList.add("in");
+        });
+        p.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      }
+    });
+  }
+
+  tabs.forEach(function (t, i) { t.setAttribute("tabindex", i === 0 ? "0" : "-1"); });
+
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () { activate(t.getAttribute("data-path"), false); });
+    t.addEventListener("keydown", function (e) {
+      var i = tabs.indexOf(t), n = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (i + 1) % tabs.length;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === "Home") n = 0;
+      else if (e.key === "End") n = tabs.length - 1;
+      if (n !== null) { e.preventDefault(); activate(tabs[n].getAttribute("data-path"), true); }
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    var next = e.target.closest("[data-next]");
+    if (next) { activate(next.getAttribute("data-next"), false); return; }
+    var back = e.target.closest("[data-paths-back]");
+    if (back && chooser) {
+      chooser.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+      var sel = document.querySelector('.path-card[aria-selected="true"]') || tabs[0];
+      sel.focus();
+      return;
+    }
+    var more = e.target.closest(".story__more");
+    if (more) {
+      var open = more.getAttribute("aria-expanded") === "true";
+      more.setAttribute("aria-expanded", open ? "false" : "true");
+      more.textContent = open ? "The full story ↓" : "Close the story ↑";
+      var detail = document.getElementById(more.getAttribute("aria-controls"));
+      if (detail) detail.hidden = open;
+    }
+  });
+})();
