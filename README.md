@@ -61,7 +61,7 @@ public/
   app.css             all styling and keyframes
   webfonts.css        @font-face rules for the self-hosted webfonts
   app.js              petal canvas, scroll reveals, timeline draw, nav,
-                      story-path switching + expandable project stories
+                      story switching + scroll-linked story progress rail
   assets/
     tasnim-cutout.png   her photo, background removed (transparent, 900×900)
     tasnim-tilt.png     head-tilt twin of the same photo (same canvas, 900×900)
@@ -71,27 +71,38 @@ worker.js             static-asset entry point
 site.manifest.json    deploy manifest
 ```
 
-## Story paths (`#stories`)
+## Story system (`#stories`)
 
-Right below the hero, "Choose your path" offers three narrative journeys —
-**The Opportunity Seeker / Problem Solver**, **The Maker** and
-**The Experimenter** — each a different angle on the same work:
+"Explore My Work" offers three narrative documentaries — **The Opportunity
+Seeker**, **The Maker** and **The Experimenter** — each a connected
+sequence of stages rather than a project grid:
 
-- The chooser is a real `role="tablist"` (←/→ arrow keys switch paths);
-  each path card carries its own accent via `--path-accent`
-  (matcha / sakura / butter).
-- A path panel reads as a story: intro → project stories → experience &
-  background → skills chips → closing thought. Every project story has a
-  **"The full story ↓"** expander (`aria-expanded` button) revealing the
-  full description plus its GitHub/live link — nothing is duplicated away.
-- Projects repeat across paths on purpose (Tandim in all three incl. the
-  "AI in Tandim" angle; J.A.R.V.I.S. in Maker and Experimenter) with the
-  same facts, tags and status chips everywhere ("Live" for Tandim,
-  "Work in progress" for the prayer-aware Route Planner).
-- "← All paths" returns to the chooser; "Next: …" flows between narratives.
+- The selection cards are a real `role="tablist"` (←/→ arrow keys switch
+  stories); each card carries its own accent via `--path-accent`
+  (matcha / sakura / butter) and an arrow that shifts on hover.
+- A story unfolds as scroll-revealed **stages** along a progress rail:
+  stage label → problem/question beat → project beat → skills chips →
+  transition banner → next stage → conclusion line. The rail fill and
+  stage dots track scroll position (fully shown under reduced motion).
+- Beats split each supplied paragraph into "The problem / The opportunity
+  / The project / Business thinking" cards; status chips keep accuracy
+  honest ("Live", "Work in progress" + "in development" tags,
+  "Professional experience", "Ongoing learning").
+- Existing project links are preserved inside the relevant stages
+  (Tandim live site, GitHub repos for Guide, J.A.R.V.I.S., Bakery,
+  Phishing, Fake News). Tandim's WhatsApp stage shows an abstract
+  WhatsApp → containerized service → Tandim flow (labels only — no
+  fabricated screenshots).
+- "← Explore my work" returns to the selection; "Next story: …" flows
+  between narratives without a page reload.
 - **No-JS fallback:** panels are only hidden when `html.js` is set by the
   inline head script — without JavaScript all three stories read as plain
   stacked sections.
+
+The old CV sections (About, Skills, Experience, Projects, Education) were
+removed once their information moved into the stories; the BSc line and
+Graines d'Entrepreneur stay as a "Background" note in Story 01, and the
+languages live on in the hero facts row.
 
 ## The hero photo
 

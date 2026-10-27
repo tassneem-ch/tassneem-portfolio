@@ -22,7 +22,6 @@
 <noscript><style>
   [data-reveal]{opacity:1!important;transform:none!important}
   .hero__title .word{opacity:1!important;transform:none!important}
-  .timeline__line{transform:none!important}
 </style></noscript>
 </head>
 <body>
@@ -42,11 +41,8 @@
     <span></span><span></span>
   </button>
   <nav class="nav__menu" id="navMenu" aria-label="Main">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#work">Projects</a>
-    <a href="#education">Education</a>
+    <a href="#top">Home</a>
+    <a href="#stories">Stories</a>
     <a class="nav__cta" href="#contact">Say hello</a>
   </nav>
 </header>
@@ -63,25 +59,21 @@
           Business · Technology · Entrepreneurship
         </p>
 
-        <h1 class="hero__title" aria-label="I like finding opportunities in problems and turning ideas into things people can use.">
-          <span class="word" style="--d:.05s">I like finding</span>
-          <span class="word word--accent" style="--d:.13s">opportunities</span>
-          <span class="word" style="--d:.21s">in problems</span>
-          <span class="word" style="--d:.29s">and turning ideas</span>
-          <span class="word" style="--d:.37s">into things</span>
-          <span class="word word--accent2" style="--d:.45s">people can use.</span>
+        <h1 class="hero__title" aria-label="Turning Problems into Profitable Opportunities Through Technology">
+          <span class="word" style="--d:.05s">Turning</span>
+          <span class="word word--accent" style="--d:.13s">Problems</span>
+          <span class="word" style="--d:.21s">into</span>
+          <span class="word word--accent2" style="--d:.29s">Profitable Opportunities</span>
+          <span class="word" style="--d:.37s">Through Technology</span>
         </h1>
 
         <p class="hero__sub" data-reveal style="--d:.55s">
-          I'm interested in what happens when business thinking meets
-          technology. Sometimes I explore data to understand a problem.
-          Sometimes I build something to solve it. And sometimes I
-          experiment with a new tool simply to discover what's possible.
+          Technical skills. Business thinking. Solutions built around real problems.
         </p>
 
         <div class="hero__actions" data-reveal style="--d:.65s">
           <a class="btn btn--primary" href="#stories">
-            <span>Choose a story ↗</span>
+            <span>Explore my work ↗</span>
           </a>
           <a class="btn btn--ghost" href="#contact">
             <span>Let's talk ↗</span>
@@ -121,667 +113,435 @@
     </div>
   </section>
 
-  <!-- ============ STORY PATHS ============ -->
+  <!-- ============ STORY SELECTION ============ -->
   <section class="section band band--pink stories" id="stories">
-    <div class="wrap">
-      <header class="section__head" data-reveal>
-        <span class="section__index">00</span>
-        <h2 class="section__title">
-          <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
-          Choose your path
-        </h2>
-        <p class="section__sub" data-reveal>Three ways to explore my work — pick the one that speaks to you.</p>
-      </header>
-
-      <div class="path-chooser" role="tablist" aria-label="Story paths" data-reveal>
-        <button class="path-card path-card--seeker" role="tab" id="tab-seeker"
-                aria-controls="path-seeker" aria-selected="false" data-path="seeker">
-          <span class="path-card__num" aria-hidden="true">01</span>
-          <span class="path-card__name">The Opportunity Seeker / Problem Solver</span>
-          <span class="path-card__tease">I'm interested in what happens behind the scenes of a business: what customers need, where things get complicated, and what could work better.</span>
-        </button>
-        <button class="path-card path-card--maker" role="tab" id="tab-maker"
-                aria-controls="path-maker" aria-selected="false" data-path="maker">
-          <span class="path-card__num" aria-hidden="true">02</span>
-          <span class="path-card__name">The Maker</span>
-          <span class="path-card__tease">An idea becomes more interesting when I start asking how it would work in real life.</span>
-        </button>
-        <button class="path-card path-card--experimenter" role="tab" id="tab-experimenter"
-                aria-controls="path-experimenter" aria-selected="false" data-path="experimenter">
-          <span class="path-card__num" aria-hidden="true">03</span>
-          <span class="path-card__name">The Experimenter</span>
-          <span class="path-card__tease">I'm curious about new tools, especially AI.</span>
-        </button>
-      </div>
-
-      <!-- PATH 1 — The Opportunity Seeker / Problem Solver -->
-      <article class="path-panel path-panel--seeker" id="path-seeker"
-               role="tabpanel" aria-labelledby="tab-seeker" tabindex="0">
-        <p class="path-panel__intro">
-          I'm interested in what happens behind the scenes of a business:
-          what customers need, where things get complicated, and what could
-          work better. Sometimes, the answer starts with looking at the
-          problem differently.
-        </p>
-
-        <h4 class="story-label">The projects behind it</h4>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-          </div>
-          <h5 class="story__title">Bakery Sales Analytics</h5>
-          <p class="story__line">I explored bakery sales data to understand customer behavior and business performance, turning a large dataset into insights that could support better decisions.</p>
-          <ul class="story__tags"><li>Python</li><li>pandas</li><li>Power BI</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-seeker-bakery">The full story ↓</button>
-          <div class="story__detail" id="d-seeker-bakery" hidden>
-            <p>A bakery was producing blind. I built an ETL pipeline over its
-            sales data, dashboards that show what actually sells and when,
-            and a demand-forecasting model that tells production what to
-            bake — cutting waste before it hits the bin.</p>
-            <p><a href="https://github.com/tassneem-ch/Bakery-Sales-Analytics" target="_blank" rel="noopener">Bakery Sales Analytics on GitHub ↗</a></p>
-          </div>
-        </div>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-            <span class="story__status story__status--live">Live</span>
-          </div>
-          <h5 class="story__title">Tandim</h5>
-          <p class="story__line">An exploration of how technology can simplify order management for Tunisian e-commerce businesses, making everyday operations easier to manage.</p>
-          <ul class="story__tags"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>OpenAI</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-seeker-tandim">The full story ↓</button>
-          <div class="story__detail" id="d-seeker-tandim" hidden>
-            <p>Running a small business shouldn't mean spending hours
-            organizing WhatsApp messages and chasing orders. I built Tandim,
-            an AI-powered platform designed around how Tunisian merchants
-            actually work. It turns WhatsApp screenshots and voice notes in
-            Tunisian Derja into structured orders, helps merchants track
-            deliveries, and flags potential return risks based on customer
-            history.</p>
-            <p><a href="https://tandim.vercel.app" target="_blank" rel="noopener">See Tandim live ↗</a></p>
-          </div>
-        </div>
-
-        <h4 class="story-label">Experience &amp; background</h4>
-        <ul class="story__context">
-          <li><b>BPO Homes — Lead Generation &amp; Appointment Setting</b>
-            <span>Working with US real-estate leads, from reaching out to agents and recruiting professionals to qualifying property-owner leads for brokerage agents. This experience gave me a practical view of outreach, customer needs, and how businesses find opportunities.</span></li>
-          <li><b>Business Administration at Tunis Business School</b>
-            <span>Building a foundation in business, statistics, accounting, and econometrics.</span></li>
-          <li><b>Entrepreneurial projects</b>
-            <span>Looking for practical problems worth solving, especially where business processes and technology meet.</span></li>
-        </ul>
-
-        <h4 class="story-label">Skills in this story</h4>
-        <ul class="story__skills">
-          <li>Business analysis</li><li>Lead qualification</li>
-          <li>Customer communication</li><li>Python</li>
-          <li>pandas</li><li>SQL</li><li>Power BI</li>
-          <li>Data cleaning</li><li>Data modeling</li>
-          <li>Business-focused problem-solving</li>
-        </ul>
-
-        <p class="path-panel__close">“She looks beyond the obvious and asks what could be improved.”</p>
-
-        <div class="path-panel__nav">
-          <button class="btn btn--ghost" data-paths-back><span>← All paths</span></button>
-          <button class="btn btn--primary" data-next="maker"><span>Next: The Maker ↗</span></button>
-        </div>
-      </article>
-
-      <!-- PATH 2 — The Maker -->
-      <article class="path-panel path-panel--maker" id="path-maker"
-               role="tabpanel" aria-labelledby="tab-maker" tabindex="0">
-        <p class="path-panel__intro">
-          An idea becomes more interesting when I start asking how it would
-          work in real life. I like exploring the pieces, figuring out what
-          I need to learn, and gradually turning a concept into something
-          tangible.
-        </p>
-
-        <h4 class="story-label">The projects behind it</h4>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-            <span class="story__status story__status--live">Live</span>
-          </div>
-          <h5 class="story__title">Tandim</h5>
-          <p class="story__line">Building a product concept around a real business workflow.</p>
-          <ul class="story__tags"><li>Next.js</li><li>TypeScript</li><li>Supabase</li><li>OpenAI</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-maker-tandim">The full story ↓</button>
-          <div class="story__detail" id="d-maker-tandim" hidden>
-            <p>Running a small business shouldn't mean spending hours
-            organizing WhatsApp messages and chasing orders. I built Tandim,
-            an AI-powered platform designed around how Tunisian merchants
-            actually work. It turns WhatsApp screenshots and voice notes in
-            Tunisian Derja into structured orders, helps merchants track
-            deliveries, and flags potential return risks based on customer
-            history.</p>
-            <p><a href="https://tandim.vercel.app" target="_blank" rel="noopener">See Tandim live ↗</a></p>
-          </div>
-        </div>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-            <span class="story__status">Work in progress</span>
-          </div>
-          <h5 class="story__title">Prayer-aware Route Planner</h5>
-          <p class="story__line">Exploring route planning around prayer times and mosque locations.</p>
-          <ul class="story__tags"><li>Flutter</li><li>Dart</li><li>FastAPI</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-maker-route">The full story ↓</button>
-          <div class="story__detail" id="d-maker-route" hidden>
-            <p>A prayer-aware travel planner: real routes, honest trade-offs,
-            and every screen labelled with where its data came from. Flutter
-            for Android + iOS from one codebase, FastAPI backend, English,
-            Arabic (RTL) and French.</p>
-            <p><a href="https://github.com/tassneem-ch/guide" target="_blank" rel="noopener">Guide on GitHub ↗</a></p>
-          </div>
-        </div>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-          </div>
-          <h5 class="story__title">J.A.R.V.I.S.</h5>
-          <p class="story__line">Working on a voice-controlled desktop assistant that can interact with the computer.</p>
-          <ul class="story__tags"><li>Python</li><li>STT/TTS</li><li>LLM&nbsp;APIs</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-maker-jarvis">The full story ↓</button>
-          <div class="story__detail" id="d-maker-jarvis" hidden>
-            <p>The fun one — and the best proof I build end to end. A
-            voice-first desktop AI assistant: speech in, speech out, ~200
-            tools it calls on its own, wired to NVIDIA or OpenRouter models.
-            Bring your own key, one-command setup.</p>
-            <p><a href="https://github.com/tassneem-ch/desktop-ai-assistant" target="_blank" rel="noopener">J.A.R.V.I.S. on GitHub ↗</a></p>
-          </div>
-        </div>
-
-        <h4 class="story-label">Experience &amp; background</h4>
-        <ul class="story__context">
-          <li><b>Personal product development</b>
-            <span>Moving beyond ideas into application structure, interfaces, integrations, and practical implementation.</span></li>
-          <li><b>Flask API project</b>
-            <span>Building an API with authentication, validation, and a simple frontend connected to it.</span></li>
-          <li><b>Flutter and deployment experimentation</b>
-            <span>Working through iOS build and installation constraints while exploring how to bring an app to a real device.</span></li>
-          <li><b>Web development learning</b>
-            <span>Developing my knowledge through JavaScript, React, backend APIs, and databases.</span></li>
-        </ul>
-
-        <h4 class="story-label">Skills in this story</h4>
-        <ul class="story__skills">
-          <li>JavaScript</li><li>React</li><li>TypeScript</li>
-          <li>Python</li><li>Flask</li><li>FastAPI</li>
-          <li>SQL</li><li>PostgreSQL</li><li>MongoDB</li>
-          <li>API integration</li><li>Git/GitHub</li>
-          <li>Flutter</li><li>Debugging</li>
-        </ul>
-
-        <p class="path-panel__close">“She doesn't just collect ideas; she tries to make them real.”</p>
-
-        <div class="path-panel__nav">
-          <button class="btn btn--ghost" data-paths-back><span>← All paths</span></button>
-          <button class="btn btn--primary" data-next="experimenter"><span>Next: The Experimenter ↗</span></button>
-        </div>
-      </article>
-
-      <!-- PATH 3 — The Experimenter -->
-      <article class="path-panel path-panel--experimenter" id="path-experimenter"
-               role="tabpanel" aria-labelledby="tab-experimenter" tabindex="0">
-        <p class="path-panel__intro">
-          I'm curious about new tools, especially AI. I like trying
-          unfamiliar approaches, understanding how they behave, and
-          discovering what happens when I put them to work on a real
-          problem.
-        </p>
-
-        <h4 class="story-label">The projects behind it</h4>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-          </div>
-          <h5 class="story__title">AI Phishing Detector</h5>
-          <p class="story__line">Applying machine learning to identify potentially malicious messages or links.</p>
-          <ul class="story__tags"><li>Python</li><li>FastAPI</li><li>Chrome&nbsp;Extension</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-exp-phishing">The full story ↓</button>
-          <div class="story__detail" id="d-exp-phishing" hidden>
-            <p>A phishing classifier that left the notebook: Logistic
-            Regression and Random Forest over TF-IDF email features, served
-            through FastAPI and shipped as a live Chrome extension that
-            flags threats as you read your inbox.</p>
-            <p><a href="https://github.com/tassneem-ch/AI-Phishing-Detector" target="_blank" rel="noopener">AI Phishing Detector on GitHub ↗</a></p>
-          </div>
-        </div>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-          </div>
-          <h5 class="story__title">Fake News Detector</h5>
-          <p class="story__line">Exploring text classification with a neural-network approach.</p>
-          <ul class="story__tags"><li>R</li><li>Shiny</li><li>NLP</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-exp-fake">The full story ↓</button>
-          <div class="story__detail" id="d-exp-fake" hidden>
-            <p>A neural-network text classifier for fake news, wrapped in an
-            interactive R Shiny dashboard — word clouds, confusion matrix
-            and model performance, designed so non-technical users can
-            explore it themselves.</p>
-            <p><a href="https://github.com/tassneem-ch/ML-Fake-News-Detector" target="_blank" rel="noopener">ML Fake News Detector on GitHub ↗</a></p>
-          </div>
-        </div>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-          </div>
-          <h5 class="story__title">J.A.R.V.I.S. / DIVA</h5>
-          <p class="story__line">Experimenting with voice interaction, AI responses, and desktop automation.</p>
-          <ul class="story__tags"><li>Python</li><li>STT/TTS</li><li>LLM&nbsp;APIs</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-exp-jarvis">The full story ↓</button>
-          <div class="story__detail" id="d-exp-jarvis" hidden>
-            <p>The fun one — and the best proof I build end to end. A
-            voice-first desktop AI assistant: speech in, speech out, ~200
-            tools it calls on its own, wired to NVIDIA or OpenRouter models.
-            Bring your own key, one-command setup.</p>
-            <p><a href="https://github.com/tassneem-ch/desktop-ai-assistant" target="_blank" rel="noopener">J.A.R.V.I.S. on GitHub ↗</a></p>
-          </div>
-        </div>
-
-        <div class="story">
-          <div class="story__meta">
-            <span class="story__kind">Project</span>
-            <span class="story__status story__status--live">Live</span>
-          </div>
-          <h5 class="story__title">AI in Tandim</h5>
-          <p class="story__line">Exploring how AI can help transform WhatsApp messages and voice notes into structured business orders.</p>
-          <ul class="story__tags"><li>OpenAI</li></ul>
-          <button class="story__more" aria-expanded="false" aria-controls="d-exp-tandimai">The full story ↓</button>
-          <div class="story__detail" id="d-exp-tandimai" hidden>
-            <p>It turns WhatsApp screenshots and voice notes in Tunisian
-            Derja into structured orders, helps merchants track deliveries,
-            and flags potential return risks based on customer history.</p>
-            <p><a href="https://tandim.vercel.app" target="_blank" rel="noopener">See Tandim live ↗</a></p>
-          </div>
-        </div>
-
-        <h4 class="story-label">Experience &amp; background</h4>
-        <ul class="story__context">
-          <li><b>Innodata — Freelance AI Data Annotator</b>
-            <span>Contributing to data annotation for large language model training.</span></li>
-          <li><b>Academic and personal machine-learning projects</b>
-            <span>Exploring machine learning, text classification, data preparation, and model integration.</span></li>
-          <li><b>Hands-on AI tooling</b>
-            <span>Experimenting with model APIs, voice tools, automation, and development environments.</span></li>
-          <li><b>Technical coursework</b>
-            <span>Applying Python, statistics, and data-related concepts to practical experiments.</span></li>
-        </ul>
-
-        <h4 class="story-label">Skills in this story</h4>
-        <ul class="story__skills">
-          <li>Python</li><li>pandas</li><li>scikit-learn</li>
-          <li>NLP</li><li>Machine-learning fundamentals</li>
-          <li>LLM API integration</li><li>FastAPI</li>
-          <li>Data preparation</li><li>Experimentation</li>
-        </ul>
-
-        <p class="path-panel__close">“She's curious enough to explore unfamiliar technology and practical enough to test it.”</p>
-
-        <div class="path-panel__nav">
-          <button class="btn btn--ghost" data-paths-back><span>← All paths</span></button>
-          <button class="btn btn--primary" data-next="seeker"><span>Next: The Opportunity Seeker ↗</span></button>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="section band band--matcha" id="about">
     <div class="wrap">
       <header class="section__head" data-reveal>
         <span class="section__index">01</span>
         <h2 class="section__title">
           <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
-          A little about me
+          Explore My Work
         </h2>
+        <p class="section__sub" data-reveal>Three ways to discover how business thinking, technical building, and continuous learning come together.</p>
       </header>
 
-      <div class="about__grid">
-        <p class="about__lede" data-reveal>
-          I'm Tasnim, a Business Analytics student at Tunis Business School
-          with an entrepreneurial mindset and a curiosity for how things
-          work.<br /><br />
-          I like spotting problems, exploring opportunities, and figuring out
-          how to turn an idea into something useful. That curiosity has led me
-          to work on projects involving AI, automation, data, and software —
-          not just to learn new technologies, but to see what I can actually
-          build with them.<br /><br />
-          I'm often juggling ideas, testing approaches, and learning along the
-          way. I enjoy connecting the business side of a problem with the
-          technical side of its solution, and I'm interested in what happens
-          when a good idea meets the right execution.<br /><br />
-          For me, learning isn't just about knowing more. It's about being
-          able to do more with what I know.<br /><br />
-          Based in Tunisia, always curious about what's next. 🌸
-        </p>
-
-        <ul class="about__chips" data-reveal style="--d:.15s">
-          <li>Based in Tunisia</li>
-          <li>Remote / async friendly</li>
-          <li>Excel → Python, analyst-to-builder</li>
-          <li>Arabic · English · French</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SKILLS ============ -->
-  <section class="section band band--cream" id="skills">
-    <div class="wrap">
-      <header class="section__head" data-reveal>
-        <span class="section__index">02</span>
-        <h2 class="section__title">
-          <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
-          Skills
-        </h2>
-      </header>
-
-      <div class="skills">
-
-        <article class="skill" data-reveal style="--fd:.0s">
-          <div class="skill__head">
-            <span class="skill__num" aria-hidden="true">01</span>
-            <h3>Data &amp; Analytics</h3>
-          </div>
-          <ul class="skill__tags">
-            <li>Excel</li><li>Power BI</li>
-            <li>Python</li><li>pandas</li>
-            <li>scikit-learn</li><li>R</li>
-          </ul>
-        </article>
-
-        <article class="skill" data-reveal style="--fd:.12s">
-          <div class="skill__head">
-            <span class="skill__num" aria-hidden="true">02</span>
-            <h3>Web Development</h3>
-          </div>
-          <ul class="skill__tags">
-            <li>HTML</li><li>CSS</li>
-            <li>JavaScript</li><li>React</li>
-            <li>PHP</li>
-          </ul>
-        </article>
-
-        <article class="skill" data-reveal style="--fd:.24s">
-          <div class="skill__head">
-            <span class="skill__num" aria-hidden="true">03</span>
-            <h3>Database Management</h3>
-          </div>
-          <ul class="skill__tags">
-            <li>SQL</li><li>PostgreSQL</li><li>MongoDB</li>
-          </ul>
-        </article>
-
-        <article class="skill" data-reveal style="--fd:.36s">
-          <div class="skill__head">
-            <span class="skill__num" aria-hidden="true">04</span>
-            <h3>AI &amp; Development Tools</h3>
-          </div>
-          <ul class="skill__tags">
-            <li>Git / GitHub</li><li>FastAPI</li>
-            <li>LLM API Integration</li><li>NLP</li>
-          </ul>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERIENCE ============ -->
-  <section class="section band band--pink" id="experience">
-    <div class="wrap">
-      <header class="section__head" data-reveal>
-        <span class="section__index">03</span>
-        <h2 class="section__title">
-          <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
-          Experience
-        </h2>
-      </header>
-
-      <ol class="timeline">
-        <span class="timeline__line" aria-hidden="true"></span>
-
-        <li class="timeline__item" data-reveal>
-          <span class="timeline__dot" aria-hidden="true"></span>
-          <div class="timeline__when">Jul 2026 — Present</div>
-          <div class="timeline__what">
-            <h3>Prospection &amp; Business Development</h3>
-            <p class="timeline__where">Graines d'Entrepreneur · Tunisia</p>
-            <p>I help connect an entrepreneurial program with potential
-            participants and partners by researching prospects, reaching
-            out, and keeping conversations moving.</p>
-          </div>
-        </li>
-
-        <li class="timeline__item" data-reveal>
-          <span class="timeline__dot" aria-hidden="true"></span>
-          <div class="timeline__when">2025 — Present</div>
-          <div class="timeline__what">
-            <h3>AI Training Data Specialist</h3>
-            <p class="timeline__where">Innodata · Remote (US)</p>
-            <p>I work on AI training tasks where attention to detail matters.
-            My work involves preparing and reviewing data to help improve the
-            quality of AI systems.</p>
-          </div>
-        </li>
-
-        <li class="timeline__item" data-reveal>
-          <span class="timeline__dot" aria-hidden="true"></span>
-          <div class="timeline__when">Jun — Sep 2025</div>
-          <div class="timeline__what">
-            <h3>Appointment Setter &amp; CRM Automation</h3>
-            <p class="timeline__where">BPOHomes Inc · Remote (California)</p>
-            <p>I worked with a US real-estate team, reaching out to leads,
-            setting appointments, and supporting agent recruitment. I also
-            worked with GoHighLevel to organize CRM workflows and make
-            follow-ups easier to manage.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ PROJECTS ============ -->
-  <section class="section band band--cream" id="work">
-    <div class="wrap">
-      <header class="section__head" data-reveal>
-        <span class="section__index">04</span>
-        <h2 class="section__title">
-          <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
-          Featured projects
-        </h2>
-        <p class="section__sub" data-reveal>Six builds, from the spreadsheet to production.</p>
-      </header>
-
-      <div class="cards">
-
-        <article class="card card--wide" data-reveal>
-          <div class="card__top">
-            <span class="card__num">01</span>
-            <span class="card__tags"><i>Next.js</i><i>TypeScript</i><i>Supabase</i><i>OpenAI</i></span>
-          </div>
-          <h3 class="card__title">Tandim</h3>
-          <p class="card__desc">
-            Making order management easier for Tunisian businesses.<br /><br />
-            Running a small business shouldn't mean spending hours organizing
-            WhatsApp messages and chasing orders. I built Tandim, an
-            AI-powered platform designed around how Tunisian merchants
-            actually work. It turns WhatsApp screenshots and voice notes in
-            Tunisian Derja into structured orders, helps merchants track
-            deliveries, and flags potential return risks based on customer
-            history.
-          </p>
-          <a class="card__link" href="https://tandim.vercel.app" target="_blank" rel="noopener">
-            Explore Tandim <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-
-        <article class="card" data-reveal style="--d:.08s">
-          <div class="card__top">
-            <span class="card__num">02</span>
-            <span class="card__tags"><i>Flutter</i><i>Dart</i><i>FastAPI</i></span>
-          </div>
-          <h3 class="card__title">Guide</h3>
-          <p class="card__desc">
-            A more thoughtful way to travel.<br /><br />
-            A good travel plan should fit your life, not the other way
-            around.<br /><br />
-            I'm building Guide, a travel-planning app that takes prayer times
-            into account when organizing routes and places to visit. It
-            combines a Flutter mobile app with a backend to make planning more
-            practical and personalized.<br /><br />
-            It's a work in progress, built around a simple idea: technology
-            should adapt to people.
-          </p>
-          <a class="card__link" href="https://github.com/tassneem-ch/guide" target="_blank" rel="noopener">
-            View on GitHub <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-
-        <article class="card" data-reveal style="--d:.08s">
-          <div class="card__top">
-            <span class="card__num">03</span>
-            <span class="card__tags"><i>Jupyter</i><i>Python</i><i>pandas</i></span>
-          </div>
-          <h3 class="card__title">Bakery Sales Analytics</h3>
-          <p class="card__desc">
-            Turning sales history into smarter baking decisions.<br /><br />
-            What if a bakery could bake smarter, not just more?<br /><br />
-            I analyzed bakery sales data to explore what sells, when demand
-            peaks, and where food might be going to waste. I used Python to
-            clean and prepare the data, designed a data model, and built
-            interactive Power BI dashboards to make sales patterns easier to
-            understand.<br /><br />
-            The goal: less guesswork, less waste, and more informed decisions.
-          </p>
-          <a class="card__link" href="https://github.com/tassneem-ch/Bakery-Sales-Analytics" target="_blank" rel="noopener">
-            View on GitHub <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-
-        <article class="card" data-reveal style="--d:.16s">
-          <div class="card__top">
-            <span class="card__num">04</span>
-            <span class="card__tags"><i>Python</i><i>FastAPI</i><i>Chrome&nbsp;Extension</i></span>
-          </div>
-          <h3 class="card__title">AI Phishing Detector</h3>
-          <p class="card__desc">
-            Spotting suspicious emails before they fool you.<br /><br />
-            Not every email deserves your trust.<br /><br />
-            I built a machine learning model that analyzes email text to
-            identify potential phishing attempts. I then connected it to a
-            FastAPI backend and a Chrome extension to explore how the model
-            could be used beyond a notebook.<br /><br />
-            The idea: make machine learning useful in everyday situations.
-          </p>
-          <a class="card__link" href="https://github.com/tassneem-ch/AI-Phishing-Detector" target="_blank" rel="noopener">
-            View on GitHub <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-
-        <article class="card" data-reveal style="--d:.08s">
-          <div class="card__top">
-            <span class="card__num">05</span>
-            <span class="card__tags"><i>R</i><i>Shiny</i><i>NLP</i></span>
-          </div>
-          <h3 class="card__title">ML Fake News Detector</h3>
-          <p class="card__desc">
-            Can a machine learn to spot misleading news?<br /><br />
-            I built a neural-network text classifier to explore how machine
-            learning can distinguish between fake and real news articles. I
-            also created an interactive R Shiny dashboard so users can explore
-            word patterns and model performance without needing to read the
-            code.<br /><br />
-            A project about language, data, and the challenge of making sense
-            of information online.
-          </p>
-          <a class="card__link" href="https://github.com/tassneem-ch/ML-Fake-News-Detector" target="_blank" rel="noopener">
-            View on GitHub <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-
-        <article class="card" data-reveal style="--d:.16s">
-          <div class="card__top">
-            <span class="card__num">06</span>
-            <span class="card__tags"><i>Python</i><i>STT/TTS</i><i>LLM&nbsp;APIs</i></span>
-          </div>
-          <h3 class="card__title">J.A.R.V.I.S. Desktop Assistant</h3>
-          <p class="card__desc">
-            An assistant that does more than answer questions.<br /><br />
-            I wanted an assistant that could do more than answer questions, so
-            I started building one.<br /><br />
-            J.A.R.V.I.S. is a voice-controlled desktop assistant that listens,
-            responds, and can use tools to carry out tasks. It brings
-            AI-powered conversation, voice interaction, and desktop
-            automation together in one project.<br /><br />
-            This is where my interest in AI meets my love of building things
-            from scratch.
-          </p>
-          <a class="card__link" href="https://github.com/tassneem-ch/desktop-ai-assistant" target="_blank" rel="noopener">
-            View on GitHub <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-
+      <div class="path-chooser" role="tablist" aria-label="Stories" data-reveal>
+        <button class="path-card path-card--seeker" role="tab" id="tab-seeker"
+                aria-controls="path-seeker" aria-selected="false" data-path="seeker">
+          <span class="path-card__top">
+            <span class="path-card__num" aria-hidden="true">01</span>
+            <span class="path-card__name">The Opportunity Seeker</span>
+          </span>
+          <span class="path-card__cat">Business · Problem-solving · Value creation</span>
+          <span class="path-card__desc">From everyday problems to business opportunities.</span>
+          <span class="path-card__q">How do I turn a problem into an opportunity? <span class="path-card__arrow" aria-hidden="true">↗</span></span>
+        </button>
+        <button class="path-card path-card--maker" role="tab" id="tab-maker"
+                aria-controls="path-maker" aria-selected="false" data-path="maker">
+          <span class="path-card__top">
+            <span class="path-card__num" aria-hidden="true">02</span>
+            <span class="path-card__name">The Maker</span>
+          </span>
+          <span class="path-card__cat">Development · Integration · Building</span>
+          <span class="path-card__desc">From an idea to a working solution.</span>
+          <span class="path-card__q">How do I turn an idea into something real? <span class="path-card__arrow" aria-hidden="true">↗</span></span>
+        </button>
+        <button class="path-card path-card--experimenter" role="tab" id="tab-experimenter"
+                aria-controls="path-experimenter" aria-selected="false" data-path="experimenter">
+          <span class="path-card__top">
+            <span class="path-card__num" aria-hidden="true">03</span>
+            <span class="path-card__name">The Experimenter</span>
+          </span>
+          <span class="path-card__cat">AI · Machine learning · Learning</span>
+          <span class="path-card__desc">From curiosity to practical experimentation.</span>
+          <span class="path-card__q">How do I turn curiosity into knowledge? <span class="path-card__arrow" aria-hidden="true">↗</span></span>
+        </button>
       </div>
 
-      <div class="work__all" data-reveal>
-        <a class="btn btn--ghost" href="https://github.com/tassneem-ch?tab=repositories" target="_blank" rel="noopener">
-          <span>All repositories on GitHub ↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
+      <!-- ============ STORY 01 — The Opportunity Seeker ============ -->
+      <article class="path-panel path-panel--seeker" id="path-seeker"
+               role="tabpanel" aria-labelledby="tab-seeker" tabindex="0">
+        <header class="story__head">
+          <h3 class="story__title">The Opportunity Seeker</h3>
+          <p class="story__intro" data-reveal>A problem is more than something that needs fixing. It's an opportunity to create value.</p>
+          <p class="story__intro" data-reveal style="--d:.08s">The entrepreneurial instinct is to look at an everyday frustration and immediately ask two questions: How can this be solved, and how can solving it become a business opportunity?</p>
+          <p class="story__intro" data-reveal style="--d:.16s">From e-commerce returns to wasted bakery inventory and the challenges real-estate professionals face, the goal is to connect real problems with practical solutions.</p>
+        </header>
 
-  <!-- ============ EDUCATION / CERTS / LANGUAGES ============ -->
-  <section class="section band band--matcha" id="education">
-    <div class="wrap">
-      <header class="section__head" data-reveal>
-        <span class="section__index">05</span>
-        <h2 class="section__title">
-          <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
-          Learning the business behind the data
-        </h2>
-      </header>
+        <div class="story__body">
+          <span class="story__rail" aria-hidden="true"><span class="story__rail-fill"></span></span>
 
-      <div class="edu">
-        <article class="edu__card" data-reveal>
-          <h3>BSc in Business Administration</h3>
-          <p class="edu__meta">Business Analytics major · IT minor</p>
-          <p class="edu__where">Tunis Business School · 2023 — 2027 (expected)</p>
-          <p class="edu__note">My studies bring together business, analytics, and technology. They help me understand not only how to analyze a problem, but also how to think about the decisions and opportunities behind it.<br /><br />Coursework: Business Analytics, Data Mining, Machine Learning, BI, Information Security.</p>
-        </article>
+          <!-- STAGE 1 — Tandim -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>01 · SPOT THE PROBLEM</p>
+            <h4 class="stage__title" data-reveal>Tandim <span class="stage__status stage__status--live">Live</span></h4>
+            <div class="beat beat--problem" data-reveal>
+              <span class="beat__tag">The problem:</span>
+              <p>COD refusals and returned deliveries cost Tunisian e-commerce businesses money.</p>
+            </div>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The opportunity:</span>
+              <p>Help merchants manage orders more intelligently and make better-informed decisions about risky orders and customers.</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The project:</span>
+              <p>Tandim explores how order management, customer history, and AI-assisted data extraction can help Tunisian e-commerce businesses handle their daily operations more effectively.</p>
+              <a class="stage__link" href="https://tandim.vercel.app" target="_blank" rel="noopener">See Tandim live ↗</a>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">Business thinking:</span>
+              <p>A recurring operational problem can become the foundation for a useful product—and a business opportunity.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>Business analysis</li><li>Business-focused problem-solving</li><li>Opportunity identification</li>
+            </ul>
+          </section>
 
-        <article class="edu__card" data-reveal style="--d:.1s">
-          <h3>A few things I've been learning</h3>
-          <ul class="edu__list">
-            <li><b>Working with the OpenAI API</b> — DataCamp, 2025</li>
-            <li><b>AI Engineer for Data Scientists</b> track — DataCamp, in progress</li>
-          </ul>
-        </article>
+          <div class="story-transition" data-reveal><span>A BUSINESS OPPORTUNITY EMERGES</span></div>
 
-        <article class="edu__card" data-reveal style="--d:.2s">
-          <h3>Languages</h3>
-          <ul class="edu__list edu__langs">
-            <li><b>Arabic</b> <span>Native</span></li>
-            <li><b>English</b> <span>Fluent</span></li>
-            <li><b>French</b> <span>Fluent</span></li>
-          </ul>
-        </article>
-      </div>
+          <!-- STAGE 2 — Bakery Sales Analysis -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>02 · FIND ANOTHER WAY</p>
+            <h4 class="stage__title" data-reveal>Bakery Sales Analysis</h4>
+            <div class="beat beat--problem" data-reveal>
+              <span class="beat__tag">The problem:</span>
+              <p>Bakeries can lose money through overproduction, unsold products, and inefficient use of resources.</p>
+            </div>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The opportunity:</span>
+              <p>Sales data can reveal patterns that help businesses make better decisions about production, inventory, and expenses.</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The project:</span>
+              <p>I analyzed more than 234,000 bakery sales records using Python and Power BI, transforming raw transactions into a structured dataset and interactive dashboards.</p>
+              <p class="stage__stat"><b>234,000+</b> <span>sales records analyzed</span></p>
+              <a class="stage__link" href="https://github.com/tassneem-ch/Bakery-Sales-Analytics" target="_blank" rel="noopener">Bakery Sales Analytics on GitHub ↗</a>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">Business thinking:</span>
+              <p>Data becomes valuable when it helps a business understand where money is being lost and where operations can improve.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>Python</li><li>pandas</li><li>Power BI</li><li>Data visualization</li><li>Business analysis</li>
+            </ul>
+          </section>
+
+          <div class="story-transition" data-reveal><span>UNDERSTAND WHAT PEOPLE VALUE</span></div>
+
+          <!-- STAGE 3 — BPO Homes -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>03 · CONVINCE PEOPLE</p>
+            <h4 class="stage__title" data-reveal>BPO Homes — Lead Generation &amp; Appointment Setting <span class="stage__status stage__status--pro">Professional experience</span></h4>
+            <div class="beat beat--problem" data-reveal>
+              <span class="beat__tag">The challenge:</span>
+              <p>Real-estate professionals already have busy workflows and existing ways of working. Introducing a new technology product means showing them why changing those workflows is worthwhile.</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The experience:</span>
+              <p>At BPO Homes, I worked on selling a tech product to real-estate agents. That meant understanding their challenges, communicating the product's value, handling objections, and convincing them that the solution could address real problems in their work.</p>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">Business thinking:</span>
+              <p>A solution creates value only when people understand why they need it—and are convinced it's worth adopting.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>Sales</li><li>Lead generation</li><li>Customer communication</li>
+            </ul>
+          </section>
+
+          <div class="story__conclusion" data-reveal>
+            <p class="story__conclusion-line">See the problem → understand its cost → build or communicate a solution with value.</p>
+          </div>
+
+          <aside class="story__context" data-reveal>
+            <span class="story__context-title">Background</span>
+            <ul>
+              <li><b>Prospection &amp; Business Development</b> — Graines d'Entrepreneur · Tunisia
+                <span>I help connect an entrepreneurial program with potential participants and partners by researching prospects, reaching out, and keeping conversations moving.</span></li>
+              <li><b>BSc in Business Administration</b> — Business Analytics major · IT minor
+                <span>Tunis Business School · 2023 — 2027 (expected)</span></li>
+            </ul>
+          </aside>
+        </div>
+
+        <nav class="story__nav">
+          <button class="btn btn--ghost" data-paths-back><span>← Explore my work</span></button>
+          <button class="btn btn--primary" data-next="maker"><span>Next story: The Maker ↗</span></button>
+        </nav>
+      </article>
+
+      <!-- ============ STORY 02 — The Maker ============ -->
+      <article class="path-panel path-panel--maker" id="path-maker"
+               role="tabpanel" aria-labelledby="tab-maker" tabindex="0">
+        <header class="story__head">
+          <h3 class="story__title">The Maker</h3>
+          <p class="story__intro" data-reveal>Ideas become more interesting when they have to work in the real world.</p>
+          <p class="story__intro" data-reveal style="--d:.08s">Building means more than choosing a technology. It means figuring out how the pieces connect, working through technical limitations, and turning an idea into something people can actually use.</p>
+          <p class="story__intro" data-reveal style="--d:.16s">These projects explore different sides of that process: mobile development, desktop automation, and connecting services through APIs and containers.</p>
+        </header>
+
+        <div class="story__body">
+          <span class="story__rail" aria-hidden="true"><span class="story__rail-fill"></span></span>
+
+          <!-- STAGE 1 — Prayer-aware Route Planner -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>01 · DESIGN THE SOLUTION</p>
+            <h4 class="stage__title" data-reveal>Prayer-aware Route Planner <span class="stage__status stage__status--wip">Work in progress</span></h4>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The idea:</span>
+              <p>A mobile route planner that considers prayer times and mosque locations when finding an efficient route.</p>
+            </div>
+            <div class="beat beat--problem" data-reveal>
+              <span class="beat__tag">The technical challenge:</span>
+              <p>Combine route planning with time-sensitive prayer information and relevant mosque locations, while keeping the experience practical for everyday navigation.</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">Technical work and technologies:</span>
+              <ul class="beat__list">
+                <li>Flutter and Dart for cross-platform mobile development.</li>
+                <li>Map integration and route-planning concepts.</li>
+                <li>Exploring route optimization and prayer-time data integration. <span class="beat__note">in development</span></li>
+                <li>iOS build experimentation using Codemagic.</li>
+                <li>Exploring practical navigation handoff to Google Maps and ways for users to contribute missing mosque locations. <span class="beat__note">in development</span></li>
+              </ul>
+              <a class="stage__link" href="https://github.com/tassneem-ch/guide" target="_blank" rel="noopener">Guide on GitHub ↗</a>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it demonstrates:</span>
+              <p>Connecting multiple technical components around a specific user need, while working through real mobile build and integration constraints.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>Flutter</li><li>Dart</li><li>Mobile development</li><li>Git/GitHub</li>
+            </ul>
+          </section>
+
+          <div class="story-transition" data-reveal><span>FROM AN IDEA TO AN INTERACTIVE SYSTEM</span></div>
+
+          <!-- STAGE 2 — J.A.R.V.I.S. / DIVA -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>02 · MAKE TECHNOLOGY INTERACTIVE</p>
+            <h4 class="stage__title" data-reveal>J.A.R.V.I.S. / DIVA</h4>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The idea:</span>
+              <p>A desktop assistant that makes interacting with a computer more natural through voice and AI.</p>
+            </div>
+            <div class="variants" data-reveal>
+              <div class="variant variant--jarvis">
+                <b class="variant__name">J.A.R.V.I.S.</b>
+                <p>The practical assistant concept, focused on voice interaction, wake-word activation, AI responses, and desktop control.</p>
+              </div>
+              <div class="variant variant--diva">
+                <b class="variant__name">DIVA</b>
+                <p>A separate, more expressive feminine interpretation, exploring a different voice, personality, and visual identity without replacing the original assistant.</p>
+              </div>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">Technical focus:</span>
+              <ul class="beat__list">
+                <li>Voice interaction and wake-word workflows.</li>
+                <li>AI model/API integration.</li>
+                <li>Desktop automation and command execution.</li>
+                <li>Separating the assistant's core functionality from its personality and presentation.</li>
+                <li>Experimenting with development tools and model integrations.</li>
+              </ul>
+              <a class="stage__link" href="https://github.com/tassneem-ch/desktop-ai-assistant" target="_blank" rel="noopener">J.A.R.V.I.S. on GitHub ↗</a>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it demonstrates:</span>
+              <p>How the same underlying idea can be explored through different user experiences, combining technical functionality with personality and interface design.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>Python</li><li>Desktop automation</li><li>Debugging</li>
+            </ul>
+          </section>
+
+          <div class="story-transition" data-reveal><span>CONNECT THE PIECES</span></div>
+
+          <!-- STAGE 3 — Tandim's WhatsApp Integration -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>03 · MAKE SERVICES WORK TOGETHER</p>
+            <h4 class="stage__title" data-reveal>Tandim's WhatsApp Integration</h4>
+            <div class="beat beat--problem" data-reveal>
+              <span class="beat__tag">The challenge:</span>
+              <p>WhatsApp is where many merchants already receive orders, but messages alone are difficult to manage as structured business records.</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The technical work:</span>
+              <p>A Docker-based WhatsApp messaging service supports the integration of messaging functionality with Tandim's broader order-management workflow.</p>
+              <div class="flow" aria-label="WhatsApp connects to a containerized messaging service, which connects to Tandim's order-management workflow">
+                <span class="flow__node">WhatsApp</span>
+                <span class="flow__arrow" aria-hidden="true">→</span>
+                <span class="flow__node">Containerized messaging service</span>
+                <span class="flow__arrow" aria-hidden="true">→</span>
+                <span class="flow__node">Tandim workflow</span>
+              </div>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">Technical focus:</span>
+              <ul class="beat__list">
+                <li>Docker and containerized service execution.</li>
+                <li>Separating the messaging service from the main application.</li>
+                <li>API-based communication between components.</li>
+                <li>Integrating WhatsApp messaging into a wider business workflow.</li>
+                <li>Managing configuration and service dependencies for a more repeatable runtime environment.</li>
+              </ul>
+              <a class="stage__link" href="https://tandim.vercel.app" target="_blank" rel="noopener">See Tandim live ↗</a>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it demonstrates:</span>
+              <p>Building a useful product isn't just about its interface. It also means connecting services, organizing components, and making the system work together.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>JavaScript/TypeScript</li><li>API integration</li><li>Docker</li><li>System integration</li>
+            </ul>
+          </section>
+
+          <div class="story__conclusion" data-reveal>
+            <p class="story__conclusion-line">Define the need → choose the tools → connect the components → test the result.</p>
+          </div>
+        </div>
+
+        <nav class="story__nav">
+          <button class="btn btn--ghost" data-paths-back><span>← Explore my work</span></button>
+          <button class="btn btn--primary" data-next="experimenter"><span>Next story: The Experimenter ↗</span></button>
+        </nav>
+      </article>
+
+      <!-- ============ STORY 03 — The Experimenter ============ -->
+      <article class="path-panel path-panel--experimenter" id="path-experimenter"
+               role="tabpanel" aria-labelledby="tab-experimenter" tabindex="0">
+        <header class="story__head">
+          <h3 class="story__title">The Experimenter</h3>
+          <p class="story__intro" data-reveal>Technology moves quickly, and there's always something new to explore.</p>
+          <p class="story__intro" data-reveal style="--d:.08s">The most interesting way to learn is to experiment: understand a concept, try an approach, see what works, and discover what needs to change.</p>
+          <p class="story__intro" data-reveal style="--d:.16s">From machine-learning projects to professional AI data work and structured AI engineering learning, this path follows the curiosity to keep going beyond what is already known.</p>
+        </header>
+
+        <div class="story__body">
+          <span class="story__rail" aria-hidden="true"><span class="story__rail-fill"></span></span>
+
+          <!-- STAGE 1 — AI Phishing Detector -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>01 · TEST AN IDEA</p>
+            <h4 class="stage__title" data-reveal>AI Phishing Detector</h4>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The question:</span>
+              <p>Can machine learning help identify potentially malicious messages or links?</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The project:</span>
+              <p>An ML-based phishing detection project with a FastAPI backend and a Chrome extension, exploring how a trained model can be connected to a practical user-facing tool.</p>
+              <a class="stage__link" href="https://github.com/tassneem-ch/AI-Phishing-Detector" target="_blank" rel="noopener">AI Phishing Detector on GitHub ↗</a>
+            </div>
+            <div class="beat beat--tech" data-reveal>
+              <span class="beat__tag">Technical exploration:</span>
+              <p>Data preparation, machine-learning workflows, model integration, API development, and browser-extension functionality.</p>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it demonstrates:</span>
+              <p>Moving from a machine-learning concept toward a tool designed around a real-world problem.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>Python</li><li>scikit-learn</li><li>FastAPI</li><li>Data preparation</li><li>Machine-learning fundamentals</li>
+            </ul>
+          </section>
+
+          <div class="story-transition" data-reveal><span>EXPLORE A DIFFERENT PROBLEM</span></div>
+
+          <!-- STAGE 2 — Fake News Detector -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>02 · TRY ANOTHER APPROACH</p>
+            <h4 class="stage__title" data-reveal>Fake News Detector</h4>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The question:</span>
+              <p>Can a neural network learn patterns in text that help distinguish potentially misleading news from other content?</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The project:</span>
+              <p>A fake-news text-classification project using a neural-network approach, accompanied by an R Shiny dashboard.</p>
+              <a class="stage__link" href="https://github.com/tassneem-ch/ML-Fake-News-Detector" target="_blank" rel="noopener">ML Fake News Detector on GitHub ↗</a>
+            </div>
+            <div class="beat beat--tech" data-reveal>
+              <span class="beat__tag">Technical exploration:</span>
+              <p>Text data preparation, NLP concepts, neural-network classification, model evaluation, and presenting results through an interactive interface.</p>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it demonstrates:</span>
+              <p>Exploring how models learn from text and how their outputs can be made easier to inspect.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>pandas</li><li>NLP</li><li>Neural networks</li><li>R Shiny</li>
+            </ul>
+          </section>
+
+          <div class="story-transition" data-reveal><span>LEARN HOW AI IS BUILT AND IMPROVED</span></div>
+
+          <!-- STAGE 3 — Innodata -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>03 · SEE AI FROM ANOTHER SIDE</p>
+            <h4 class="stage__title" data-reveal>Innodata — Professional Experience in AI Training <span class="stage__status stage__status--pro">Professional experience</span></h4>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The experience:</span>
+              <p>Working as a freelance AI data annotator with Innodata, contributing to data annotation for large language model training.</p>
+            </div>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The connection:</span>
+              <p>AI systems depend on more than model architecture. The data used to train and evaluate them matters, too.</p>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it adds to the story:</span>
+              <p>A professional perspective on the work behind AI systems, complementing the experiments and projects developed independently.</p>
+            </div>
+            <ul class="stage__skills" data-reveal aria-label="Skills in this stage">
+              <li>AI data annotation</li><li>LLM concepts</li>
+            </ul>
+          </section>
+
+          <div class="story-transition" data-reveal><span>KEEP BUILDING KNOWLEDGE</span></div>
+
+          <!-- STAGE 4 — DataCamp -->
+          <section class="stage">
+            <span class="stage__dot" aria-hidden="true"></span>
+            <p class="stage__label" data-reveal>04 · KEEP EXPLORING</p>
+            <h4 class="stage__title" data-reveal>DataCamp — AI Engineering Track <span class="stage__status stage__status--learn">Ongoing learning</span></h4>
+            <div class="beat beat--opportunity" data-reveal>
+              <span class="beat__tag">The next step:</span>
+              <p>Exploring the DataCamp AI Engineering track to develop a stronger understanding of how AI applications are designed and implemented.</p>
+            </div>
+            <div class="beat beat--project" data-reveal>
+              <span class="beat__tag">The focus:</span>
+              <p>Continue building practical knowledge, connect existing technical skills with AI engineering concepts, and learn how individual tools fit into larger applications.</p>
+              <ul class="beat__list beat__list--plain">
+                <li><b>Working with the OpenAI API</b> — DataCamp, 2025</li>
+                <li><b>AI Engineer for Data Scientists</b> track — DataCamp, in progress</li>
+              </ul>
+            </div>
+            <div class="beat beat--thinking" data-reveal>
+              <span class="beat__tag">What it demonstrates:</span>
+              <p>Learning isn't limited to a single project. Each experiment creates a starting point for the next one.</p>
+            </div>
+          </section>
+
+          <div class="story__conclusion" data-reveal>
+            <p class="story__conclusion-line">Ask a question → test an approach → learn from the process → build on that knowledge.</p>
+          </div>
+        </div>
+
+        <nav class="story__nav">
+          <button class="btn btn--ghost" data-paths-back><span>← Explore my work</span></button>
+          <button class="btn btn--primary" data-next="seeker"><span>Next story: The Opportunity Seeker ↗</span></button>
+        </nav>
+      </article>
+
     </div>
   </section>
 
@@ -789,7 +549,7 @@
   <section class="section band band--pink contact" id="contact">
     <div class="wrap">
       <header class="section__head" data-reveal>
-        <span class="section__index">06</span>
+        <span class="section__index">02</span>
         <h2 class="section__title">
           <svg class="petal-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#petal-icon"/></svg>
           Have an idea? Let's explore it.
