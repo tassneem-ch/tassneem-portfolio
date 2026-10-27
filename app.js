@@ -230,8 +230,9 @@
 })();
 
 /* ============================================================
-   STORY PATHS — choose a path, switch narratives,
-   expand project details. Tablist semantics + arrow keys.
+   STORY PATHS — choose a story, switch narratives,
+   narrated stages with a scroll-linked progress rail.
+   Tablist semantics + arrow keys. No dependencies.
    ============================================================ */
 (function () {
   "use strict";
@@ -241,6 +242,33 @@
   var chooser = document.querySelector(".path-chooser");
   if (!tabs.length || !panels.length) return;
 
+  var active = null; // currently shown story panel
+
+  /* scroll-linked narration: rail fill height + stage dots */
+  function updateProgress() {
+    if (!active || reduced) return; // reduced motion: story shows fully, no scroll choreography
+    var body = active.querySelector(".story__body");
+    if (!body) return;
+    var fill = body.querySelector(".story__rail-fill");
+    var r = body.getBoundingClientRect();
+    var pct = (window.innerHeight * 0.7 - r.top) / r.height;
+    pct = Math.max(0, Math.min(1, pct));
+    if (fill) fill.style.height = (pct * 100) + "%";
+    Array.prototype.forEach.call(body.querySelectorAll(".stage"), function (s) {
+      s.classList.toggle(
+        "stage--reached",
+        s.getBoundingClientRect().top < window.innerHeight * 0.6
+      );
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking || !active) return;
+    ticking = true;
+    requestAnimationFrame(function () { updateProgress(); ticking = false; });
+  }, { passive: true });
+
   function activate(id, moveFocus) {
     tabs.forEach(function (t) {
       var on = t.getAttribute("data-path") === id;
@@ -248,18 +276,28 @@
       t.setAttribute("tabindex", on ? "0" : "-1");
       if (on && moveFocus) t.focus();
     });
+    active = null;
     panels.forEach(function (p) {
       var on = p.id === "path-" + id;
       p.classList.toggle("is-active", on);
-      if (on) {
-        // reveal children right away — the scroll observer can't be
-        // trusted for very tall or just-shown panels
-        Array.prototype.forEach.call(p.querySelectorAll("[data-reveal]"), function (el) {
+      if (on) active = p;
+    });
+    if (active) {
+      // under reduced motion, skip the scroll choreography and
+      // show the whole story immediately (labels, stages, rail)
+      if (reduced) {
+        Array.prototype.forEach.call(active.querySelectorAll("[data-reveal]"), function (el) {
           el.classList.add("in");
         });
-        p.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+        Array.prototype.forEach.call(active.querySelectorAll(".stage"), function (s) {
+          s.classList.add("stage--reached");
+        });
+        var f = active.querySelector(".story__rail-fill");
+        if (f) f.style.height = "100%";
       }
-    });
+      active.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      updateProgress();
+    }
   }
 
   tabs.forEach(function (t, i) { t.setAttribute("tabindex", i === 0 ? "0" : "-1"); });
@@ -284,15 +322,6 @@
       chooser.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
       var sel = document.querySelector('.path-card[aria-selected="true"]') || tabs[0];
       sel.focus();
-      return;
-    }
-    var more = e.target.closest(".story__more");
-    if (more) {
-      var open = more.getAttribute("aria-expanded") === "true";
-      more.setAttribute("aria-expanded", open ? "false" : "true");
-      more.textContent = open ? "The full story ↓" : "Close the story ↑";
-      var detail = document.getElementById(more.getAttribute("aria-controls"));
-      if (detail) detail.hidden = open;
     }
   });
 })();
